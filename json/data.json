@@ -1,0 +1,851 @@
+[
+    {
+        "info": {
+            "Intro": "Mrs. Gerralto is a 76yo F with history of COPD (on 2L home O2), T2DM, HLD, and GERD who presents to the ED with 5 days of worsening shortness of breath, fatigue, and cough with increased white sputum. She has required 4L of O2 via her nasal cannula during this time. She denies any sick contacts but does volunteer as a receptionist at the nearby assisted living facility. She ran out of her Symbicort 10 days ago and has not yet been able to meet with her physician to renew her prescription. On review of systems, she denies any chills, malaise, chest pain, abdominal pain, nausea, vomiting, diarrhea, or dysuria. She is afebrile, and saturating 90% on 4L nasal cannula. On exam, she is in mild respiratory distress with diffuse expiratory wheezes. She has no leukocytosis and no consolidation on chest x-ray. She is started on methylprednisolone IV and albuterol nebulizers in the ED, with improvement in her symptoms. She is admitted to medicine for further evaluation.",
+            "Name": "Susan Gerralto\n",
+            "Synopsis": "As the admitting team, you start the patient on azithromycin, albuterol nebulizers q6h, and prednisone 40mg daily. Her outpatient oral diabetes regimen will be converted to sliding scale insulin. During her hospital course, her breathing, wheezing, and cough improve. Her oxygen requirements are weaned down to her home level of 2L. On day 3, Mrs. Gerralto is ready to be discharged home. She will need enough azithromycin to complete a 5 day course (500mg day one, 250mg thereafter), and a 5 day prednisone course of 40mg once daily. Please refill or continue her home medications as appropriate."
+        },
+        "medications": [
+            {
+                "Current Dose numeric": "1000",
+                "Dose": "500mg",
+                "Frequency": "q12h",
+                "Medication": "Metformin",
+                "Modify 1 display": "1000mg oral BID",
+                "Modify 1 numeric": "2000",
+                "Modify 2 display": "750mg oral BID",
+                "Modify 2 numeric": "1500",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "10",
+                "Dose": "pre-meal sliding scale",
+                "Frequency": "TID with meals",
+                "Medication": "Aspart Insulin",
+                "Modify 1 display": "2 units for BG 250-300, 4 units for BG 300-350...",
+                "Modify 1 numeric": "2000",
+                "Modify 2 display": "4 units for BG 250-300, 6 units for BG 300-350...",
+                "Modify 2 numeric": "4000",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "subcutaneous",
+                "Source": "Hospital",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "90",
+                "Dose": "90mcg",
+                "Frequency": "q6h prn",
+                "Medication": "ProAir HFA (Albuterol MDI Inhaler)",
+                "Modify 1 display": "90mcg q6h prn",
+                "Modify 1 numeric": "90",
+                "Modify 2 display": "180mcg q6h prn",
+                "Modify 2 numeric": "180",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral inhalation",
+                "Source": "Home",
+                "group": "2"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "2.5mg",
+                "Frequency": "q6h prn",
+                "Medication": "Albuterol Nebulizer Solution",
+                "Modify 1 display": "2.5mg oral neb q6h prn",
+                "Modify 1 numeric": "2.5",
+                "Modify 2 display": "5mg oral neb",
+                "Modify 2 numeric": "2.5",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral nebulizer",
+                "Source": "Hospital",
+                "group": "2"
+            },
+            {
+                "Current Dose numeric": "40",
+                "Dose": "40mg",
+                "Frequency": "Bedtime",
+                "Medication": "Atorvastatin",
+                "Modify 1 display": "20mg oral bedtime",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "80mg oral bedtime",
+                "Modify 2 numeric": "80",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "3"
+            },
+            {
+                "Current Dose numeric": "40",
+                "Dose": "40mg",
+                "Frequency": "Bedtime",
+                "Medication": "Atorvastatin",
+                "Modify 1 display": "20mg oral bedtime",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "80mg oral bedtime",
+                "Modify 2 numeric": "80",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "3"
+            },
+            {
+                "Current Dose numeric": "40",
+                "Dose": "20mg",
+                "Frequency": "q12h",
+                "Medication": "Famotidine",
+                "Modify 1 display": "10mg oral q12h",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "40mg oral q12h",
+                "Modify 2 numeric": "80",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "4"
+            },
+            {
+                "Current Dose numeric": "40",
+                "Dose": "20mg",
+                "Frequency": "q12h",
+                "Medication": "Famotidine",
+                "Modify 1 display": "10mg oral q12h",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "40mg oral q12h",
+                "Modify 2 numeric": "80",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "4"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "160mcg/4.5mcg",
+                "Frequency": "q12h",
+                "Medication": "Symbicort (Budesonide/ Formoterol)",
+                "Modify 1 display": "160mcg/4.5mcg oral inh q12h",
+                "Modify 1 numeric": "320",
+                "Modify 2 display": "80mcg/4.5mcg",
+                "Modify 2 numeric": "160",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral inhalation",
+                "Source": "Home",
+                "group": "5"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "160mcg/4.5mcg",
+                "Frequency": "q12h",
+                "Medication": "Symbicort (Budesonide/ Formoterol)",
+                "Modify 1 display": "160mcg/4.5mcg oral inh q12h",
+                "Modify 1 numeric": "320",
+                "Modify 2 display": "80mcg/4.5mcg",
+                "Modify 2 numeric": "160",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral inhalation",
+                "Source": "Hospital",
+                "group": "5"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "250mg",
+                "Frequency": "once daily",
+                "Medication": "Azithromycin",
+                "Modify 1 display": "2 tabs of 250mg once daily",
+                "Modify 1 numeric": "500",
+                "Modify 2 display": "3 tabs of 250mg once daily",
+                "Modify 2 numeric": "750",
+                "Modify 3 display": "2 tabs of 500mg once daily",
+                "Modify 3 numeric": "1000",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "6"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "40mg",
+                "Frequency": "once daily",
+                "Medication": "Prednisone",
+                "Modify 1 display": "4 tabs of 10mg (20mg once daily)",
+                "Modify 1 numeric": "40",
+                "Modify 2 display": "8 tabs of 10mg (40mg once daily)",
+                "Modify 2 numeric": "80",
+                "Modify 3 display": "18 tabs of 10mg (q3 day 10mg taper)",
+                "Modify 3 numeric": "180",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "7"
+            }
+        ],
+        "responses": [
+            [
+                "Group",
+                "target value",
+                "<target",
+                ">target"
+            ],
+            [
+                "1",
+                "1000",
+                "Her diabetes regimen was underdosed, and she returns with hyperglycemia. Given that the patient was on metformin at home, she should have her home metformin continued. She should not have been prescribed aspart insulin at home because she has no supplies, would require education, and her current condition does not warrant it. ",
+                "Her diabetes regimen was overdosed, and she returns with hypoglycemia. Given that the patient was on metformin at home, she should have her home metformin continued. She should not have been prescribed aspart insulin at home because she has no supplies, would require education, and her current condition does not warrant it. "
+            ],
+            [
+                "2",
+                "90",
+                "Her asthma inhaler was underdosed, and she returns with asthma exacerbation. She requires her home ProAir HFA to be continued. The nebulizer solution was only prescribed while inpatient. If given a prescription, she has no nebulizer machine at home and would not be able to use it. ",
+                "Her asthma regimen was overdosed, and she returns with palpitations. She requires her home ProAir HFA to be continued. The nebulizer solution was only prescribed while inpatient. If given a prescription, she has no nebulizer machine at home and would not be able to use it. "
+            ],
+            [
+                "3",
+                "40",
+                "Her cholesterol medication was underdosed, and she returns with chest pain. She requires that her home regimen of atorvastatin be continued. ",
+                "Her cholesterol medication was overerdosed, and she returns with myalgias. She requires that her home regimen of atorvastatin be continued. "
+            ],
+            [
+                "4",
+                "40",
+                "Her reflux medication was underdosed, and she returns with GERD symptoms. She requires that her home regimen of famotidine be continued. ",
+                "Her reflux medication was overdosed, and she returns with a headache. She requires that her home regimen of famotidine be continued. "
+            ],
+            [
+                "5",
+                "320",
+                "Her Symbicort was underdosed, and she returns with COPD exacerbation. The inciting event for the patient's exacerbation was the lack of her home Symbicort prescription. Without a new refill she would quickly return to the clinic with worsening symptoms. ",
+                "Her Symbicort was overdosed, and she returns with a headache. The inciting event for the patient's exacerbation was the lack of her home Symbicort prescription. Without a new refill she would quickly return to the clinic with worsening symptoms. "
+            ],
+            [
+                "6",
+                "500",
+                "Her Azithromycin was underdosed, and she returns with a COPD exacerbation. The azithromycin course is 5 days. Day 1 is 500mg, and then 250mg once daily thereafter for 4 days. The patient was discharged on hospital Day 3, so she received the first 3 days of the treatment course. The remaining 2 days would be 2 doses of 250mg once daily. ",
+                "Her Azithromycin was overdosed, and she develops QTc prolongation. The azithromycin course is 5 days. Day 1 is 500mg, and then 250mg once daily thereafter for 4 days. The patient was discharged on hospital Day 3, so she received the first 3 days of the treatment course. The remaining 2 days would be 2 doses of 250mg once daily. "
+            ],
+            [
+                "7",
+                "80",
+                "Her Prednisone was underdosed, and she returns with a COPD exacerbation. The prednisone course was for 5 days of 40mg once daily. Being discharged on Day 3, she needed 2 additional days. Often times, the pharmacy is not able to dispense the desired amount of prednisone as a since tablet, in this case, the pharmacy had tabs of 10mg. Therefore, the patient required 8 tabs of 10mg, for her to take 2 additional days of 40mg once daily. ",
+                "Her Prednisone was overdosed, and she have unexpected weight gain. The prednisone course was for 5 days of 40mg once daily. Being discharged on Day 3, she needed 2 additional days. Often times, the pharmacy is not able to dispense the desired amount of prednisone as a since tablet, in this case, the pharmacy had tabs of 10mg. Therefore, the patient required 8 tabs of 10mg, for her to take 2 additional days of 40mg once daily. "
+            ]
+        ]
+    },
+    {
+        "info": {
+            "Intro": "70yo M with a history of CKD stage III from HTN, severe spinal stenosis with neuropathy, and HLD presenting with altered mental status. On a hot midsummer day, patient was working outside in his garden. Over the course of the day, he developed worsening nausea, weakness, and ultimately altered mental status. Of notes, he was recently prescribed a trial of methocarbamol for back spasms. His wife admitted to decreased po intake on the day of presentation.",
+            "Name": "John Donovan",
+            "Synopsis": "On presentation, patient was found to have BP 92/63, BUN 84 (baseline 43) and elevated Cr 3.4 (baseline 2.1). He was given IV fluids and admitted for further management. With hydration and home medication readjustment, his mental status improved. During the admission, his renal function improved, but not back to baseline. He had resultant reduced renal function with worsened CKD. His gabapentin dose is reduced to account for the worsening renal function. The home pravastatin is non-formulary, so he had been put on simvastatin only while inpatient. "
+        },
+        "medications": [
+            {
+                "Current Dose numeric": "5",
+                "Dose": "5mg",
+                "Frequency": "once daily",
+                "Medication": "Amlodipine",
+                "Modify 1 display": "2.5mg once daily",
+                "Modify 1 numeric": "2.5",
+                "Modify 2 display": "10mg once daily",
+                "Modify 2 numeric": "10",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "5",
+                "Dose": "5mg",
+                "Frequency": "once daily",
+                "Medication": "Amlodipine",
+                "Modify 1 display": "2.5mg once daily",
+                "Modify 1 numeric": "2.5",
+                "Modify 2 display": "10mg once daily",
+                "Modify 2 numeric": "10",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "1200",
+                "Dose": "600mg",
+                "Frequency": "q12h",
+                "Medication": "Gabapentin",
+                "Modify 1 display": "200mg once daily",
+                "Modify 1 numeric": "200",
+                "Modify 2 display": "400mg once daily",
+                "Modify 2 numeric": "400",
+                "Modify 3 display": "600mg once daily",
+                "Modify 3 numeric": "600",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "2"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "400mg",
+                "Frequency": "once daily",
+                "Medication": "Gabapentin",
+                "Modify 1 display": "200mg once daily",
+                "Modify 1 numeric": "200",
+                "Modify 2 display": "400mg once daily",
+                "Modify 2 numeric": "400",
+                "Modify 3 display": "600mg once daily",
+                "Modify 3 numeric": "600",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "2"
+            },
+            {
+                "Current Dose numeric": "40",
+                "Dose": "40mg",
+                "Frequency": "bedtime",
+                "Medication": "Pravastatin",
+                "Modify 1 display": "20mg bedtime",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "60mg bedtime",
+                "Modify 2 numeric": "60",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "3"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "20mg",
+                "Frequency": "bedtime",
+                "Medication": "Simvastatin",
+                "Modify 1 display": "10mg bedtime",
+                "Modify 1 numeric": "10",
+                "Modify 2 display": "40mg bedtime",
+                "Modify 2 numeric": "41",
+                "Modify 3 display": "",
+                "Modify 3 numeric": "",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "3"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "600mg",
+                "Frequency": "q6h prn",
+                "Medication": "Acetaminophen",
+                "Modify 1 display": "600mg q6h prn",
+                "Modify 1 numeric": "2400",
+                "Modify 2 display": "800mg q4h prn",
+                "Modify 2 numeric": "5400",
+                "Modify 3 display": "950mg q6h prn",
+                "Modify 3 numeric": "3800",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "4"
+            }
+        ],
+        "responses": [
+            [
+                "Group",
+                "target value",
+                "<target",
+                ">target"
+            ],
+            [
+                "1",
+                "5",
+                "Patient's antihypertensive regimen was underdosed, and he returns with uncontrolled hypertension. Patient was to have his home amlodipine dose continued. ",
+                "Patient's antihypertensive regimen was overdosed, and he returns with symptomatic hypotension. Patient was to have his home amlodipine dose continued. "
+            ],
+            [
+                "2",
+                "400",
+                "Patient's neuropathy regimen was underdosed for his renal function, and he returns with paresthesias. Given his reduced renal function on discharge, the patient needs his medication readjusted. If he is not given a new gabapentin dose, he will develop increased somnolence. He required a new outpatient prescription of the adjusted inpatient dosing. ",
+                "Patient's neuropathy regimen was overdosed for his renal function, and he returns with somnolence. Given his reduced renal function on discharge, the patient needs his medication readjusted. If he is not given a new gabapentin dose, he will develop increased somnolence. He required a new outpatient prescription of the adjusted inpatient dosing. "
+            ],
+            [
+                "3",
+                "40",
+                "His cholesterol medication was underdosed, and he returns with chest pain. He requires that his home regimen of atorvastatin be continued. ",
+                "His cholesterol medication was underdosed, and he returns with chest pain. He requires that his home regimen of atorvastatin be continued. "
+            ],
+            [
+                "4",
+                "2400",
+                "His pain regimen was underdosed, and he returns with back pain. He required a discharge prescription of the inpatient acetaminophen regimen.",
+                "His pain regimen was overdosed, and he returns with acute liver failure. He required a discharge prescription of the inpatient acetaminophen regimen."
+            ]
+        ]
+    },
+    {
+        "info": {
+            "Intro": "A patient arrives at the Doctors office...",
+            "Name": "Martha Smith",
+            "Synopsis": "Returning after the first visit... "
+        },
+        "medications": [
+            {
+                "Current Dose numeric": "20",
+                "Dose": "20mg",
+                "Frequency": "once daily",
+                "Medication": "Lasix",
+                "Modify 1 display": "Prescribe 20mg once daily",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "Prescribe 20mg BID",
+                "Modify 2 numeric": "40",
+                "Modify 3 display": "Prescribe 80mg once daily",
+                "Modify 3 numeric": "80",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "40mg",
+                "Frequency": "once daily",
+                "Medication": "Lasix",
+                "Modify 1 display": "Prescribe 20mg once daily",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "Prescribe 20mg BID",
+                "Modify 2 numeric": "40",
+                "Modify 3 display": "Prescribe 80mg once daily",
+                "Modify 3 numeric": "80",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "81",
+                "Dose": "81mg",
+                "Frequency": "once daily",
+                "Medication": "Aspirin",
+                "Modify 1 display": "Prescribe 81mg once daily",
+                "Modify 1 numeric": "81",
+                "Modify 2 display": "Prescribe 81mg BID",
+                "Modify 2 numeric": "162",
+                "Modify 3 display": "Prescribe 325mg once daily",
+                "Modify 3 numeric": "325",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "2"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "81mg",
+                "Frequency": "once daily",
+                "Medication": "Aspirin",
+                "Modify 1 display": "Prescribe 81mg once daily",
+                "Modify 1 numeric": "81",
+                "Modify 2 display": "Prescribe 81mg BID",
+                "Modify 2 numeric": "162",
+                "Modify 3 display": "Prescribe 325mg once daily",
+                "Modify 3 numeric": "325",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "2"
+            },
+            {
+                "Current Dose numeric": "100",
+                "Dose": "50mg",
+                "Frequency": "BID",
+                "Medication": "Metoprolol",
+                "Modify 1 display": "Prescribe 25mg once daily",
+                "Modify 1 numeric": "25",
+                "Modify 2 display": "Prescribe 25mg BID",
+                "Modify 2 numeric": "50",
+                "Modify 3 display": "Prescribe 75mg once daily",
+                "Modify 3 numeric": "75",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "3"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "50mg",
+                "Frequency": "BID",
+                "Medication": "Metoprolol",
+                "Modify 1 display": "Prescribe 25mg once daily",
+                "Modify 1 numeric": "25",
+                "Modify 2 display": "Prescribe 25mg BID",
+                "Modify 2 numeric": "50",
+                "Modify 3 display": "Prescribe 1000mg once daily",
+                "Modify 3 numeric": "1000",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "3"
+            },
+            {
+                "Current Dose numeric": "40",
+                "Dose": "20 units",
+                "Frequency": "BID",
+                "Medication": "NPH",
+                "Modify 1 display": "Prescribe 10 units once daily",
+                "Modify 1 numeric": "10",
+                "Modify 2 display": "Prescribe 10 units BID",
+                "Modify 2 numeric": "20",
+                "Modify 3 display": "Prescribe 400 units once daily",
+                "Modify 3 numeric": "40",
+                "Route": "subcutaneous",
+                "Source": "Home",
+                "group": "4"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "5 units",
+                "Frequency": "Bedtime",
+                "Medication": "Lantus",
+                "Modify 1 display": "Prescribe 5 units bedtime",
+                "Modify 1 numeric": "5",
+                "Modify 2 display": "Prescribe 7.5 units BID",
+                "Modify 2 numeric": "15",
+                "Modify 3 display": "Prescribe 30 units once daily",
+                "Modify 3 numeric": "30",
+                "Route": "subcutaneous",
+                "Source": "Hospital",
+                "group": "4"
+            },
+            {
+                "Current Dose numeric": "10",
+                "Dose": "10mg",
+                "Frequency": "Bedtime",
+                "Medication": "Lipitor",
+                "Modify 1 display": "Prescribe 10mg once daily",
+                "Modify 1 numeric": "10",
+                "Modify 2 display": "Prescribe 20mg BID",
+                "Modify 2 numeric": "40",
+                "Modify 3 display": "Prescribe 80mg once daily",
+                "Modify 3 numeric": "80",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "5"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "10mg",
+                "Frequency": "Bedtime",
+                "Medication": "Lipitor",
+                "Modify 1 display": "Prescribe 10mg once daily",
+                "Modify 1 numeric": "10",
+                "Modify 2 display": "Prescribe 20mg BID",
+                "Modify 2 numeric": "40",
+                "Modify 3 display": "Prescribe 80mg once daily",
+                "Modify 3 numeric": "80",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "5"
+            }
+        ],
+        "responses": [
+            [
+                "Group",
+                "target value",
+                "<target",
+                ">target",
+                "<target_image"
+            ],
+            [
+                "1",
+                "40",
+                "This is a longer paragraph stating that the patient will suffer heart failure",
+                "This is a longer paragraph stating that the patient will suffer  acute renal failure"
+            ],
+            [
+                "2",
+                "81",
+                "chest pain",
+                "GI bleed"
+            ],
+            [
+                "3",
+                "100",
+                "afib RVR",
+                "hypotension"
+            ],
+            [
+                "4",
+                "5",
+                "hyperglycemia",
+                "hypoglycemia"
+            ],
+            [
+                "5",
+                "10",
+                "stroke",
+                "thigh pain"
+            ]
+        ]
+    },
+    {
+        "info": {
+            "Intro": "Lord Grantham is a 67 year old male, who is admitted to the hospital after he was unable to speak and move his right leg upon waking. He had history signficant for hypertension and hyperlipidemia. During the hospital course he was found to have a left sided MCA stroke. He also has persistent atrial fibrillation with RVR, with a CHA\u2082DS\u2082-VASc score of 4. In addition his blood pressure remained persistently elevated, only to be controlled 2 days later after his lisinopril dose was increased. His existing atorvastatin dose was also increased due to the stroke event.",
+            "Name": "Robert Crawley",
+            "Synopsis": "Lord Grantham's neuro exam has stabilized and started to improve after 2 days in the hospital with initiation of intensive physical and occupational therapy. He is to be discharged back to Downton Abbey to recover at home as he will be able to receive adequate care from Mr. Carson, his butler. In the hospital he is started on Eliquis 5mg BID for anticoagulation after PARQ conference with his family and his personal physician Dr. Clarkson. He also started metoprolol and uptitrated to 50mg BID for rate control. HIs existing atoravastin was increased to 80mg daily, and lisnopril was uptitrated to 20mg daily."
+        },
+        "medications": [
+            {
+                "Current Dose numeric": "20",
+                "Dose": "20mg",
+                "Frequency": "once daily",
+                "Medication": "atorvastatin",
+                "Modify 1 display": "Prescribe 20mg once daily",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "Prescribe 20mg BID",
+                "Modify 2 numeric": "40",
+                "Modify 3 display": "Prescribe 80mg once daily",
+                "Modify 3 numeric": "80",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "80mg",
+                "Frequency": "once daily",
+                "Medication": "atorvastatin",
+                "Modify 1 display": "Prescribe 20mg once daily",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "Prescribe 20mg BID",
+                "Modify 2 numeric": "40",
+                "Modify 3 display": "Prescribe 80mg once daily",
+                "Modify 3 numeric": "80",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "5mg",
+                "Frequency": "BID",
+                "Medication": "Eliquis",
+                "Modify 1 display": "Prescribe 2.5mg BID",
+                "Modify 1 numeric": "5",
+                "Modify 2 display": "Prescribe 5mg BID",
+                "Modify 2 numeric": "10",
+                "Modify 3 display": "Prescribe 10mg BID",
+                "Modify 3 numeric": "20",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "2"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "50mg",
+                "Frequency": "BID",
+                "Medication": "Metoprolol",
+                "Modify 1 display": "Prescribe 25mg BID",
+                "Modify 1 numeric": "50",
+                "Modify 2 display": "Prescribe 50 BID",
+                "Modify 2 numeric": "100",
+                "Modify 3 display": "Prescribe 100mg BID",
+                "Modify 3 numeric": "200",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "3"
+            },
+            {
+                "Current Dose numeric": "5",
+                "Dose": "5mg",
+                "Frequency": "daily",
+                "Medication": "Lisinopril",
+                "Modify 1 display": "Prescribe 10mg once daily",
+                "Modify 1 numeric": "10",
+                "Modify 2 display": "Prescribe 20mg once daily",
+                "Modify 2 numeric": "20",
+                "Modify 3 display": "Prescribe 40mg once daily",
+                "Modify 3 numeric": "40",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "4"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "20mg",
+                "Frequency": "daily",
+                "Medication": "Lisinopril",
+                "Modify 1 display": "Prescribe 5mg daily",
+                "Modify 1 numeric": "5",
+                "Modify 2 display": "Prescribe 10mg once daily",
+                "Modify 2 numeric": "10",
+                "Modify 3 display": "Prescribe 20mg once daily",
+                "Modify 3 numeric": "20",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "4"
+            }
+        ],
+        "responses": [
+            [
+                "Group",
+                "target value",
+                "<target",
+                ">target",
+                "<target_image",
+                ">target_image"
+            ],
+            [
+                "1",
+                "80",
+                "Lord Grantham suffers a ischemic stroke because you failed to lower his ASCVD scores.",
+                "Lord Grantham developed acute liver failure because you overdosed him on atorvastatin."
+            ],
+            [
+                "2",
+                "10",
+                "Lord Grantham develops another stroke because you failed to anticoagulate him adequately.",
+                "Lord Grantham had acute hematemesis because you prescribed too much anticoagulation."
+            ],
+            [
+                "3",
+                "100",
+                "Lord Grantham developed palpitations and he was found to be RVR because you failed to control his heart rate.",
+                "Lord Grantham syncopized and was found to have bradycardia because you prescribed too much beta blockade."
+            ],
+            [
+                "4",
+                "20",
+                "Dr. Clarkson is very cross at you because you failed to control Lord Grantham's blood pressure on a subsequent follow-up exam.",
+                "Lord Grantham syncopized and he was hypotensive because you precribed too much antihypertensives."
+            ]
+        ]
+    },
+    {
+        "info": {
+            "Intro": "Mr. Bates is a 40 year old male admitted to the hospital after he developed significant acute on chronic right leg pain and swelling. He has history significant for right lower extremity paralysis and chronic pain on oxycodone associated with injury during service in British Army, as well as T2 NIDDM with A1c of 7.5. During admission he was found to have a acute right femoral deep vein thrombosis confirmed with bilateral lower extremity venous doppler ultrasound. He had no other risk factors for DVT except for immobility.",
+            "Name": "John Bates",
+            "Synopsis": "Mr. Bates' right leg pain improved with more frequent doses of oxycodone and intensive physical therapy while in the hospital. After PARQ conferences he opted for warfarin for chronic anticoagulation, and agrees to lovenox for bridging therapy. You agreed to bridge his warfarin for 5 more days with lovenox after he demonstrated stable INR for 2 days on warfarin. You also reminded him to be seen in the anticoagulation clinic as soon as possible to have routine INR checks and warfarin dosing adjustment. He requested a new prescription of oxycodone at higher doses and frequency because he is still having pain and he is almost running out of his home prescription, however you suspect he is not tolerating higher doses because his nurse reports that he was more somnolent at 15mgs and sometimes gets confused with Q4H dosing. In addition, his hospital lantus is to be discontinued and he will resume home metformin on discharge."
+        },
+        "medications": [
+            {
+                "Current Dose numeric": "0",
+                "Dose": "50mg",
+                "Frequency": "BID",
+                "Medication": "lovenox",
+                "Modify 1 display": "Prescribe 50 mg once daily (with supplies) for 2 days",
+                "Modify 1 numeric": "150",
+                "Modify 2 display": "Prescribe 50 mg once daily (with supplies) for 5 days",
+                "Modify 2 numeric": "350",
+                "Modify 3 display": "Prescribe 50 mg once daily (with supplies) for 30 days",
+                "Modify 3 numeric": "7500",
+                "Route": "SQ",
+                "Source": "Hospital",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "5mg",
+                "Frequency": "QD",
+                "Medication": "warfarin",
+                "Modify 1 display": "Prescribe 2.5mg once daily",
+                "Modify 1 numeric": "150",
+                "Modify 2 display": "Prescribe 5mg once daily",
+                "Modify 2 numeric": "350",
+                "Modify 3 display": "Prescribe 7.5mg once daily",
+                "Modify 3 numeric": "7500",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "1"
+            },
+            {
+                "Current Dose numeric": "2000",
+                "Dose": "1000mg",
+                "Frequency": "BID",
+                "Medication": "Metformin",
+                "Modify 1 display": "Prescribe 500mg once daily",
+                "Modify 1 numeric": "500",
+                "Modify 2 display": "Prescribe 1000mg once daily",
+                "Modify 2 numeric": "1000",
+                "Modify 3 display": "Prescribe 1000mg BID",
+                "Modify 3 numeric": "2000",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "2"
+            },
+            {
+                "Current Dose numeric": "0",
+                "Dose": "2 units",
+                "Frequency": "QHS",
+                "Medication": "lantus",
+                "Modify 1 display": "Prescribe 2 units QHS",
+                "Modify 1 numeric": "2",
+                "Modify 2 display": "Prescribe 5 units QHS",
+                "Modify 2 numeric": "5",
+                "Modify 3 display": "Prescribe 10 units QHS",
+                "Modify 3 numeric": "10",
+                "Route": "SQ",
+                "Source": "Hospital",
+                "group": "3"
+            },
+            {
+                "Current Dose numeric": "40",
+                "Dose": "10mg",
+                "Frequency": "Q6H PRN",
+                "Medication": "oxycodone",
+                "Modify 1 display": "Prescribe 5mg Q6H PRN",
+                "Modify 1 numeric": "20",
+                "Modify 2 display": "Prescribe 10mg Q6H PRN",
+                "Modify 2 numeric": "40",
+                "Modify 3 display": "Prescribe 15mg Q6H PRN",
+                "Modify 3 numeric": "60",
+                "Route": "oral",
+                "Source": "Home",
+                "group": "4"
+            },
+            {
+                "Current Dose numeric": "60",
+                "Dose": "10mg",
+                "Frequency": "Q4H PRN",
+                "Medication": "oxycodone",
+                "Modify 1 display": "Prescribe 5mg Q4H PRN",
+                "Modify 1 numeric": "30",
+                "Modify 2 display": "Prescribe 10mg Q4H PRN",
+                "Modify 2 numeric": "60",
+                "Modify 3 display": "Prescribe 15mg Q4H PRN",
+                "Modify 3 numeric": "90",
+                "Route": "oral",
+                "Source": "Hospital",
+                "group": "4"
+            }
+        ],
+        "responses": [
+            [
+                "Group",
+                "target value",
+                "<target",
+                ">target",
+                "<target_image",
+                ">target_image"
+            ],
+            [
+                "1",
+                "750",
+                "Mr. Bates returns with chest pain and dyspnea, and was found to have acute PE because you failed to anticoagulate him properly.",
+                "Mr. Bates was rushed back to the hospital after he collapsed at home. He was found to be extremely anemic because you prescribe him too much anticoagulation."
+            ],
+            [
+                "2",
+                "2000",
+                "Mr. Bates returns with frequent polyuria, polydipsia, and increased fatigue. He had persistent hyperglycemia because you failed to resume his antihyperglycemics at the proper dose.",
+                "Mr. Bates complains of significant GI distress, because you prescribed too much metformin."
+            ],
+            [
+                "3",
+                "0",
+                "(none)",
+                "Mr. Bates collapsed and was rushed to the hospital. He was hypoglycemic in the ED due to lantus administration in combination with metformin."
+            ],
+            [
+                "4",
+                "40",
+                "Mr. Bates returns with palpitation, abdominal pain, diarrhea, and worsening pain because you failed to prescribe the appropriate amounts of narcotics and he is in withdrawal.",
+                "Mr. Bates became more somnolent and confused, unable to carry out his duties as a valet. He returned to the hospital and was found to have overdosed on oxycodone."
+            ]
+        ]
+    }
+]

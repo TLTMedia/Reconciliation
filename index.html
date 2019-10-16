@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Reconciliation</title>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link href="//fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="js/script.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/resize.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
+</head>
+
+<body>
+    <div id="patientList"></div>
+    <div id="bio"></div>
+    <div id="medGrid">
+        <div class="row">
+            <div id="medication" class="column">Medication</div>
+            <div id="source" class="column">Source</div>
+            <div id="dose" class="column">Dose</div>
+            <div id="route" class="column">Route</div>
+            <div id="frequency" class="column">Frequency</div>
+            <div id="stop" class="column">Stop</div>
+            <div class="column" id="continue">Continue</div>
+            <div class="column" id="modify">Modify</div>
+        </div>
+    </div>
+
+    <!-- <div id="status"></div> -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Status</h2>
+            </div>
+            <div id="status" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <h3></h3>
+            </div>
+        </div>
+</body>
+
+</html>
