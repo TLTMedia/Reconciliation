@@ -1,73 +1,74 @@
-body{
-font-family: 'Poppins', sans-serif;
-text-align:center;
-
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align:center;
 }
- input[type=radio] {
+
+input[type=radio] {
     border: 0px;
     width: 1rem;
     height: 1rem;
     margin-top:.5rem;
 }
 
+div {
+    margin: 0rem 0rem 0rem 0rem;
+}
 
-div{
-margin:0rem 0rem 0rem 0rem;
+select {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    height: 1.5rem;
 }
-select{
-margxin-bottom:1rem;
-font-size:1rem;
-height:1.5rem;
-}
-#status{
-margin:auto;
-text-align: left;
-margin-left: 40%;
-}
-.row
-{
 
-border-style:solid;
-border-width:0 0 .1rem 0 ;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
+.row {
+    border-style:solid;
+    border-width:0 0 .1rem 0 ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
 }
 
 .column {
     display: flex;
-  flex-basis: 10%;
-align-items: center;
+    flex-basis: 10%;
+    align-items: center;
 }
-#medGrid{
-display:none;
 
+#bio {
+    font-size: 1rem;
 }
-#check{
-margin:.5rem;
-color:green;
 
+#medGrid {
+    display:none;
 }
-#cross{
-margin:.5rem;
-color:red;
 
+#check {
+    margin:.5rem;
+    color:green;
 }
-.Home:before,.Hospital:before{ content: '';
-height: 1.5rem;
-width: 1.5rem;
-margin-right:.1rem;
-margin-bottom:.1rem;
-background-size: 1.5rem;
-}
-.Hospital:before{
-background: url(../img/hospital.svg) no-repeat;
 
+#cross {
+    margin:.5rem;
+    color:red;
 }
-.Home:before{
-background: url(../img/house.svg) no-repeat;
 
+.Home:before, .Hospital:before {
+    content: '';
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right:.1rem;
+    margin-bottom:.1rem;
+    background-size: 1.5rem;
 }
+
+.Hospital:before {
+    background: url(../img/hospital.svg) no-repeat;
+}
+
+.Home:before {
+    background: url(../img/house.svg) no-repeat;
+}
+
 input[type=submit] {
     border-radius: 5px;
     border: 0;
