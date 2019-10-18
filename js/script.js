@@ -118,7 +118,7 @@ function button(evt) {
         status = response();
     }
 
-    $('#status').html(status)
+    $('.modal-body').html(status)
 }
 
 function response() {
