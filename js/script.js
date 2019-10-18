@@ -44,8 +44,6 @@ function showPatient(patientId) {
     $('#patientList').hide();
     $('.patient-intro').show();
     // console.log(state.patients[2].medications);
-    $('#patientList').hide()
-    var patientId = $(this)[0].id.split("_")[1]
     location.hash = parseInt(patientId) + 1
     state.currentPatient = patientId
     $('.patient-intro-body').html(state['patients'][patientId].info.Intro);
