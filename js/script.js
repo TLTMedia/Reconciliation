@@ -10,15 +10,22 @@ $(function () {
 })
 
 function init(patients) {
+    // When no hash is present and the back button is pressed; fully refresh the page.	
+    window.onhashchange = function (e) {
+        if (!this.location.hash) {
+            this.window.location.href = this.window.location.href;
+        }
+    }
+
     for (patient in patients) {
         $('#patientList').append($('<button/>', {
             id: "patient_" + patient,
             html: patients[patient].info.Name
-        }).on("click", showPatient));
+        }).on("click", showPatientIntro));
     }
 
     if (location.hash) {
-        $(`#patientList button:nth-child(${parseInt(location.hash.split("#")[1]) + 1})`)
+        $(`#patientList button:nth-child(${location.hash.split("#")[1] + 1})`)
             .trigger("click");
         console.log(parseInt(location.hash.split("#")[1]) + 1);
     }
