@@ -3,38 +3,67 @@
 <head>
     <meta charset="utf-8">
     <title>Reconciliation</title>
-    <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
-    <link href="//fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script src="js/script.js"></script>
-    <script src="js/modal.js"></script>
-    <script src="js/resize.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript" src="js/resize.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/modal.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/modal.css" />
 </head>
 
 <body>
-    <div id="patientList"></div>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="">Reconciliation</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Patients
+                    </a>
+                    <div id="patientList" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <!-- <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a> -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="patient-intro">
         <div class="patient-intro-header">Patient Introduction</div>
         <div class="patient-intro-body"></div>
         <div class="patient-intro-footer"></div>
     </div>
-    <div id="medGrid">
+    <div id="medGrid" class="container">
         <div class="row">
-            <div id="medication" class="column">Medication</div>
-            <div id="source" class="column">Source</div>
-            <div id="dose" class="column">Dose</div>
-            <div id="route" class="column">Route</div>
-            <div id="frequency" class="column">Frequency</div>
-            <div id="stop" class="column">Stop</div>
-            <div class="column" id="continue">Continue</div>
-            <div class="column" id="modify">Modify</div>
+            <div id="medication" class="col">Medication</div>
+            <div id="source" class="col">Source</div>
+            <div id="dose" class="col">Dose</div>
+            <div id="route" class="col">Route</div>
+            <div id="frequency" class="col">Frequency</div>
+            <div id="stop" class="col">Stop</div>
+            <div id="continue" class="col">Continue</div>
+            <div id="modify" class="col">Modify</div>
         </div>
     </div>
 
@@ -43,15 +72,13 @@
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <span class="close modal-close-action modal-reset-hash">&times;</span>
-                <h2 id="modal-header-title">Status</h2>
+                <h3 id="modal-header-title">Status</h3>
+                <!-- <span class="close modal-close-action modal-reset-hash">&times;</span> -->
             </div>
             <div class="modal-body"></div>
             <div class="modal-footer">
-                <h3>
-                    <button id="modal-main-action"
-                        class="modal-close-action ui-button ui-widget ui-corner-all"></button>
-                </h3>
+                <button class="modal-close-btn modal-close-action btn btn-secondary">Cancel</button>
+                <button id="modal-main-action" class="modal-close-action btn btn-primary"></button>
             </div>
         </div>
     </div>

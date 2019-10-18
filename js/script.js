@@ -5,27 +5,28 @@ $(function () {
         state['patients'] = patients;
         init(patients);
     }).done(() => {
-        //console.log(state.patients[2].medications);
+        // console.log(state.patients[2].medications);
     });
 })
 
 function init(patients) {
     // When no hash is present and the back button is pressed; fully refresh the page.	
-    window.onhashchange = function (e) {
+    window.onhashchange = () => {
         if (!this.location.hash) {
             this.window.location.href = this.window.location.href;
         }
     }
 
     for (patient in patients) {
-        $('#patientList').append($('<button/>', {
+        $('#patientList').append($('<a/>', {
             id: "patient_" + patient,
+            class: "dropdown-item",
             html: patients[patient].info.Name
         }).on("click", showPatientIntro));
     }
 
     if (location.hash) {
-        $(`#patientList button:nth-child(${parseInt(location.hash.split("#")[1]) + 1})`)
+        $(`#patientList a:nth-child(${parseInt(location.hash.split("#")[1]) + 1})`)
             .trigger("click");
         console.log(parseInt(location.hash.split("#")[1]) + 1);
     }
@@ -41,10 +42,10 @@ function showPatientIntro(event) {
 }
 
 function showPatient(patientId) {
-    $('#patientList').hide();
+    // $('#patientList').hide();
     $('.patient-intro').show();
     // console.log(state.patients[2].medications);
-    location.hash = parseInt(patientId) + 1
+    //location.hash = parseInt(patientId) + 1
     state.currentPatient = patientId
     $('.patient-intro-body').html(state['patients'][patientId].info.Intro);
 
@@ -63,7 +64,7 @@ function showPatient(patientId) {
         ["Medication", "Source", "Dose", "Route", "Frequency"].forEach(function (
             element) {
             row.append($('<div/>', {
-                class: `column ${medications[i][element]}`,
+                class: `col ${medications[i][element]}`,
 
                 html: medications[i][element]
             }))
@@ -74,17 +75,17 @@ function showPatient(patientId) {
                 type: "radio",
                 name: "med_" + i,
                 value: "0",
-                class: "column",
+                class: "col",
                 "data-action": "stop"
             }),
             $("<input/>", {
                 type: "radio",
                 name: "med_" + i,
                 value: continueVal,
-                class: "column",
+                class: "col",
                 "data-action": "continue"
             }),
-            $('<select/>', { name: "med_modify_" + i, class: "column" })
+            $('<select/>', { name: "med_modify_" + i, class: "col" })
         ])
         $("#medGrid").append(row)
 

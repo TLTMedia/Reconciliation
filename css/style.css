@@ -1,97 +1,121 @@
+:root {
+    /** Purple-ish */
+    --rec-primary-bg: rgba(71, 42, 57, 1.0);
+    /** Almost black font color */
+    --rec-primary-fnt: rgba(22, 29, 49, 1.0);
+    /** Whitish font */
+    --rec-secondary-fnt: rgba(241, 241, 241, 1.0);
+    /** Whitish font dimmer */
+    --rec-secondary-a-fnt: rgba(241, 241, 241, 0.8);
+}
+
 body {
-	font-family: 'Poppins', sans-serif;
-	font-size: 1.25rem;
-	text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    /* text-align: center; */
+    background-color: var(--rec-secondary-fnt);
+    color: var(--rec-primary-fnt);
+}
+
+.navbar {
+    background-color: var(--rec-primary-bg);
+}
+
+.navbar .navbar-brand {
+    color: var(--rec-secondary-fnt);
+}
+
+.navbar .nav-link {
+    color: var(--rec-secondary-a-fnt);
+}
+
+a {
+    cursor: pointer;
 }
 
 input[type=radio] {
-	border: 0px;
-	width: 1rem;
-	height: 1rem;
-	margin-top: .5rem;
-}
-
-div {
-	margin: 0rem 0rem 0rem 0rem;
+    border: 0px;
+    width: 1rem;
+    height: 1rem;
+    margin-top: .5rem;
 }
 
 select {
-	margin-bottom: 1rem;
-	font-size: 1rem;
-	height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    height: 1.5rem;
 }
 
 .patient-intro {
-	display: none;
-	padding: 10px 20px 20px 20px;
+    display: none;
+    padding: 10px 20px 20px 20px;
 }
 
 .patient-intro-header {
-	text-decoration: underline;
-	font-size: 1.5rem;
+    text-decoration: underline;
+    font-size: 1.5rem;
 }
 
 .row {
-	border-style: solid;
-	border-width: 0 0 .1rem 0;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: no-wrap;
+    border-style: solid;
+    border-width: 0 0 .1rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
 }
 
 .column {
-	display: flex;
-	flex-basis: 10%;
-	align-items: center;
+    display: flex;
+    flex-basis: 10%;
+    align-items: center;
 }
 
 #medGrid {
-	display: none;
+    display: none;
 }
 
 #cross {
-	margin: .5rem;
-	color: red;
+    margin: .5rem;
+    color: red;
 }
 
-.Home:before,
-.Hospital:before {
-	content: '';
-	height: 1.5rem;
-	width: 1.5rem;
-	margin-right: .1rem;
-	margin-bottom: .1rem;
-	background-size: 1.5rem;
+.Home:before, .Hospital:before {
+    content: '';
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: .1rem;
+    margin-bottom: .1rem;
+    background-size: 1.5rem;
 }
 
 .Hospital:before {
-	background: url(../img/hospital.svg) no-repeat;
+    background: url(../img/hospital.svg) no-repeat;
 }
 
 .Home:before {
-	background: url(../img/house.svg) no-repeat;
+    background: url(../img/house.svg) no-repeat;
 }
 
 input[type=submit] {
-	border-radius: 5px;
-	border: 0;
-	width: 80px;
-	height: 25px;
-	font-family: Tahoma;
-	background: #f4f4f4;
-	/* Old browsers */
-	background: -moz-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
-	/* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #f4f4f4), color-stop(100%, #ededed));
-	/* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
-	/* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
-	/* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
-	/* IE10+ */
-	background: linear-gradient(to bottom, #f4f4f4 1%, #ededed 100%);
-	/* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#ededed', GradientType=0);
-	/* IE6-9 */
+    border-radius: 5px;
+    border: 0;
+    width: 80px;
+    height: 25px;
+    font-family: Tahoma;
+    background: #f4f4f4;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #f4f4f4), color-stop(100%, #ededed));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f4f4f4 1%, #ededed 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #f4f4f4 1%, #ededed 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#ededed', GradientType=0);
+    /* IE6-9 */
 }
