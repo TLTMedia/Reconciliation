@@ -25,7 +25,7 @@ function init(patients) {
     }
 
     if (location.hash) {
-        $(`#patientList button:nth-child(${location.hash.split("#")[1] + 1})`)
+        $(`#patientList button:nth-child(${parseInt(location.hash.split("#")[1]) + 1})`)
             .trigger("click");
         console.log(parseInt(location.hash.split("#")[1]) + 1);
     }
@@ -36,7 +36,7 @@ function showPatientIntro(event) {
     location.hash = parseInt(patientId);
     showModal(state['patients'][patientId].info.Intro, "Begin", "Patient Introduction");
     $("#modal-main-action").one("click", () => {
-        showPatient(patientId)
+        showPatient(patientId);
     });
 }
 
