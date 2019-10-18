@@ -1,4 +1,4 @@
-var state = {};
+const state = {};
 
 $(function () {
     $.get('json/data.json', function (patients) {
@@ -10,23 +10,17 @@ $(function () {
 })
 
 function init(patients) {
-    // When no hash is present and the back button is pressed; fully refresh the page.
-    window.onhashchange = function (e) {
-        if (!this.location.hash) {
-            this.window.location.href = this.window.location.href;
-        }
-    }
-
     for (patient in patients) {
         $('#patientList').append($('<button/>', {
             id: "patient_" + patient,
             html: patients[patient].info.Name
-        }).on("click", showPatientIntro));
+        }).on("click", showPatient));
     }
 
     if (location.hash) {
-        $(`#patientList button:nth-child(${location.hash.split("#")[1] + 1})`)
+        $(`#patientList button:nth-child(${parseInt(location.hash.split("#")[1]) + 1})`)
             .trigger("click");
+        console.log(parseInt(location.hash.split("#")[1]) + 1);
     }
 }
 
@@ -40,12 +34,15 @@ function showPatientIntro(event) {
 }
 
 function showPatient(patientId) {
-    console.log(patientId);
-    $('#patientList').hide()
+    $('#patientList').hide();
+    $('.patient-intro').show();
     // console.log(state.patients[2].medications);
-    //location.hash = parseInt(patientId) + 1
+    $('#patientList').hide()
+    var patientId = $(this)[0].id.split("_")[1]
+    location.hash = parseInt(patientId) + 1
     state.currentPatient = patientId
-    $('#bio').html(state['patients'][patientId].info.Intro)
+    $('.patient-intro-body').html(state['patients'][patientId].info.Intro);
+
     var medications = state['patients'][patientId].medications;
     // console.log(state.patients[2].medications);
 

@@ -20,7 +20,11 @@
 
 <body>
     <div id="patientList"></div>
-    <div id="bio"></div>
+    <div class="patient-intro">
+        <div class="patient-intro-header">Patient Introduction</div>
+        <div class="patient-intro-body"></div>
+        <div class="patient-intro-footer"></div>
+    </div>
     <div id="medGrid">
         <div class="row">
             <div id="medication" class="column">Medication</div>
@@ -40,15 +44,13 @@
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <span class="close modal-close-action modal-reset-hash">&times;</span>
-                <h2 id="modal-header-title">Status</h2>
+                <span class="close">&times;</span>
+                <h2>Status</h2>
             </div>
-            <div id="status" class="modal-body"></div>
+            <div id="status" class="modal-body">
+            </div>
             <div class="modal-footer">
-                <h3>
-                    <button id="modal-main-action"
-                        class="modal-close-action ui-button ui-widget ui-corner-all"></button>
-                </h3>
+                <h3></h3>
             </div>
         </div>
 </body>
