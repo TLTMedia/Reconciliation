@@ -1,0 +1,36 @@
+# RewriteEngine on
+# RewriteCond %{HTTPS} off
+# RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+
+RewriteEngine on
+RewriteBase /
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^.*$ - [E=CWD:%2]
+
+AuthType shibboleth
+ShibRequestSetting requireSession 1
+require valid-user
+DirectoryIndex index.html
+
+
+
+# ShibCompatWith24 on
+# AuthType shibboleth
+# #ShibDisable Off
+# #ShibRequireSession Off
+# #ShibRequestSetting isPassive On
+# ShibRequestSetting requireSession true
+# #Require shib-attr affiliation  faculty@stonybrook.edu
+# Order Deny,Allow
+# Deny from all
+# Satisfy Any
+# Allow from env=!HTTPS
+# Require shibboleth
+
+
+
+php_flag display_startup_errors on
+php_flag display_errors on
+php_flag html_errors on
+php_flag log_errors on

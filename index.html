@@ -6,16 +6,16 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poppins&display=swap" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script type="text/javascript" src="js/script.js"></script>
@@ -54,18 +54,8 @@
         <div class="patient-intro-body"></div>
         <div class="patient-intro-footer"></div>
     </div>
-    <div id="medGrid" class="container">
-        <div class="row">
-            <div id="medication" class="col">Medication</div>
-            <div id="source" class="col">Source</div>
-            <div id="dose" class="col">Dose</div>
-            <div id="route" class="col">Route</div>
-            <div id="frequency" class="col">Frequency</div>
-            <div id="stop" class="col">Stop</div>
-            <div id="continue" class="col">Continue</div>
-            <div id="modify" class="col">Modify</div>
-        </div>
-    </div>
+
+    <div id="medGrid" class="container"></div>
 
     <!-- <div id="status"></div> -->
     <div id="myModal" class="modal">
@@ -77,6 +67,7 @@
             </div>
             <div class="modal-body"></div>
             <div class="modal-footer">
+                <span>Attempt: #<span id="attempt-current">1</span>/<span id="attempt-maximum">2</span></span>
                 <button class="modal-close-btn modal-close-action modal-reset-hash btn btn-secondary">Cancel</button>
                 <button id="modal-main-action" class="modal-close-action btn btn-primary"></button>
             </div>

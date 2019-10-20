@@ -1,6 +1,13 @@
 const state = {};
 
 $(function () {
+    $.getJSON('api/public/student_init', function (data) {
+        if (data.status != "ok") {
+            alert("A server error occured. \nPlease contact: 'paul.st.denis@stonybrook.edu' with the subject 'Reconciliation Server Error'\nAnd include this error: " + data.data);
+            console.error("Unable to create a required directory/file.");
+        }
+    });
+
     $.get('json/data.json', function (patients) {
         state['patients'] = patients;
         init(patients);
@@ -10,6 +17,16 @@ $(function () {
 })
 
 function init(patients) {
+    /**
+     * Show the welcome text
+     */
+    $("#medGrid").html(`
+        <center>
+            <br />
+            <p>Welcome to Reconciliation. Choose a patient to diagnose from the dropdown list above.</p>
+        </center>
+    `);
+
     // When no hash is present and the back button is pressed; fully refresh the page.	
     window.onhashchange = () => {
         if (!this.location.hash) {
@@ -25,51 +42,68 @@ function init(patients) {
         }).on("click", showPatientIntro));
     }
 
+    /** 
+     * If a hash is present when the page loads - then parse it and load that patient by mimicking a click
+     */
     if (location.hash) {
-        $(`#patientList a:nth-child(${parseInt(location.hash.split("#")[1]) + 1})`)
-            .trigger("click");
-        console.log(parseInt(location.hash.split("#")[1]) + 1);
+        //$("#medGrid").empty();
+        $(`#patientList a:nth-child(${parseInt(location.hash.split("#")[1]) + 1})`).trigger("click");
     }
+}
+
+function resetMedGrid() {
+    $("#medGrid").empty();
+    $("#medGrid").html(`
+        <div class="row">
+            <div id="medication" class="col">Medication</div>
+            <div id="source" class="col">Source</div>
+            <div id="dose" class="col">Dose</div>
+            <div id="route" class="col">Route</div>
+            <div id="frequency" class="col">Frequency</div>
+            <div id="stop" class="col">Stop</div>
+            <div id="continue" class="col">Continue</div>
+            <div id="modify" class="col">Modify</div>
+        </div>
+    `);
 }
 
 function showPatientIntro(event) {
     let patientId = event.target.id.split("_")[1];
     location.hash = parseInt(patientId);
     showModal(state['patients'][patientId].info.Intro, "Begin", "Patient Introduction");
-    $("#modal-main-action").one("click", () => {
+    $("#modal-main-action").off().one("click", () => {
+        resetMedGrid();
         showPatient(patientId);
     });
 }
 
 function showPatient(patientId) {
-    // $('#patientList').hide();
+    state.currentPatient = patientId;
+
+    /**
+     * Shows patient intro during the med selection phase
+     */
     $('.patient-intro').show();
-    // console.log(state.patients[2].medications);
-    //location.hash = parseInt(patientId) + 1
-    state.currentPatient = patientId
     $('.patient-intro-body').html(state['patients'][patientId].info.Intro);
 
-    var medications = state['patients'][patientId].medications;
-    // console.log(state.patients[2].medications);
+    let medications = state['patients'][patientId].medications;
 
-    for (i in state['patients'][patientId].medications) {
-        var groupClass = `group_${medications[i].group}`
-        // console.log(i);
-        // console.log(medications[i]);
-        // console.log(medications[i].group);
-        var row = $("<div/>", {
-            class: `row ${groupClass} med_${medications[i]["Medication"]}_${
-                medications[i]["Source"]}`
+    for (i in medications) {
+        let groupClass = `group_${medications[i].group}`;
+
+        let row = $("<div/>", {
+            class: `row ${groupClass} med_${medications[i]["Medication"]}_${medications[i]["Source"]}`
         });
-        ["Medication", "Source", "Dose", "Route", "Frequency"].forEach(function (
-            element) {
+
+        ["Medication", "Source", "Dose", "Route", "Frequency"].forEach(function (element) {
             row.append($('<div/>', {
                 class: `col ${medications[i][element]}`,
-
                 html: medications[i][element]
-            }))
-        })
-        var continueVal = medications[i]["Current Dose numeric"]
+            }));
+        });
+
+        let continueVal = medications[i]["Current Dose numeric"];
+
         row.append([
             $("<input/>", {
                 type: "radio",
@@ -85,19 +119,32 @@ function showPatient(patientId) {
                 class: "col",
                 "data-action": "continue"
             }),
-            $('<select/>', { name: "med_modify_" + i, class: "col" })
-        ])
-        $("#medGrid").append(row)
+            $('<select/>', {
+                name: "med_modify_" + i,
+                class: "col"
+            })
+        ]);
 
-        populateModifications(patientId, i)
+        $("#medGrid").append(row);
+
+        populateModifications(patientId, i);
     }
 
-    $("#medGrid").append($('<button/>', { value: "submit", id: "myBtn", html: "Submit" }))
-    $('button').on("click", button)
-    $('input').on("click", radio)
-    $('select').on("change", select)
-    $('#medGrid').show()
+    $("#medGrid").append(
+        $('<button/>', {
+            value: "submit",
+            id: "myBtn",
+            class: "btn-primary",
+            html: "Submit",
+        })
+    );
+
+    $('button').on("click", button);
+    $('input').on("click", radio);
+    $('select').on("change", select);
+    $('#medGrid').show();
 }
+
 function button(evt) {
     showModal();
     var groupSet = new Set();
@@ -226,9 +273,9 @@ function populateModifications(patientId, i) {
 
     while (a++ < 7) {
         var key = `Modify ${a} display`
-        var option = state['patients'][patientId].medications[i][key];
+        var option = med[key];
         var key = `Modify ${a} numeric`;
-        var value = state['patients'][patientId].medications[i][key] || 0;
+        var value = med[key] || 0;
         if (option) {
             select.append($("<option/>", { value: value, html: option }))
         } else
