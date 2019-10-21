@@ -49,7 +49,6 @@ import { InterfaceController, APIHandler, StudentData, PatientData, Toast } from
     init({
         state: state,
         ui: ui,
-        api: api, // this should be removed eventually
         student_data: student_data,
         patient_data: patient_data,
     });

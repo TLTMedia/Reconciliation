@@ -10,6 +10,25 @@ class Trial
     }
 
     /**
+     * Get all the submitted data of a student
+     */
+    public function getFullStudentReport()
+    {
+        $allRawResponses = $this->__getRawStudentResponses();
+        if (!$allRawResponses && !is_array($allRawResponses)) {
+            return array(
+                "status" => "error",
+                "data"   => "unable to get all student responses",
+            );
+        }
+
+        return array(
+            "status" => "ok",
+            "data"   => $allRawResponses,
+        );
+    }
+
+    /**
      * Get the current users' (eppn) current trial # for the specified patientId
      */
     public function getSubmittedTrialAmounts()
@@ -55,6 +74,7 @@ class Trial
             $fileData          = json_decode($fileData);
             $responseDataObj[] = $fileData;
         }
+
         return $responseDataObj;
     }
 

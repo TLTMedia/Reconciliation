@@ -35,11 +35,22 @@ class Student
         }
 
         /**
+         * Get the results of the submission
+         */
+        $calculatedResults = $this->__calculateTrialResults($patientId, $attemptData);
+        $isCorrect         = false;
+        if ($calculatedResults == "") {
+            $isCorrect = true;
+        }
+
+        /**
          * First save the attempt
          */
         $fullAttemptData = array(
             "patient_id"   => $patientId,
             "trial_number" => $attemptNum,
+            "response"     => $calculatedResults,
+            "correct"      => $isCorrect,
             "submission"   => $attemptData,
         );
 
@@ -51,7 +62,7 @@ class Student
         } else {
             return array(
                 "status" => "ok",
-                "data"   => $this->__calculateTrialResults($patientId, $attemptData),
+                "data"   => $calculatedResults,
             );
         }
     }

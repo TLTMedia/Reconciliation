@@ -126,6 +126,100 @@ $app->post("/submit_attempt", function () use ($app, $PATH_STUDENTS, $parameters
     );
 });
 
+/**
+ * Get the trial numbers for each patient this student submitted answers for
+ */
+$app->get("/my_student_report_xl", function () use ($app, $PATH_STUDENTS, $responseFmt, $authUniqueId) {
+    require "../Actions/Trial.php";
+    $trial = new Trial($app->log, $PATH_STUDENTS, $authUniqueId);
+
+    $fullData = $trial->getFullStudentReport();
+    if ($fullData["status"] != "ok") {
+        echo "unable to create full student report";
+        exit;
+    }
+    $data = $fullData["data"];
+
+    /** Include PHPExcel */
+    require_once dirname(__FILE__) . '/../PHPExcel/PHPExcel.php';
+
+    // Create new PHPExcel object
+    $objPHPExcel = new PHPExcel();
+
+    $fileName = "Student Report - " . $authUniqueId;
+
+    // Set document properties
+    $objPHPExcel->getProperties()->setCreator("Reconciliation API")
+        ->setLastModifiedBy("Reconciliation API")
+        ->setTitle("Student Report - " . $authUniqueId)
+        ->setSubject("Student Report - " . $authUniqueId);
+
+    // Set the headers
+    $alphabet = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+    $headers  = array("Patient Id", "Trial", "Correct");
+    for ($i = 0; $i < count($headers); $i++) {
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue($alphabet[$i] . "1", $headers[$i]);
+    }
+
+    // Iterate through the raw data
+    $row   = 2;
+    $alpha = 0;
+    for ($i = 0; $i < count($data); $i++) {
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue($alphabet[$alpha] . $row, $data[$i]->patient_id);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue($alphabet[$alpha + 1] . $row, $data[$i]->trial_number);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue($alphabet[$alpha + 2] . $row, json_encode($data[$i]->correct));
+        $row++;
+        //$alpha++;
+    }
+
+    // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+    $objPHPExcel->setActiveSheetIndex(0);
+
+    // Redirect output to a client’s web browser (Excel2007)
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="' . $fileName . '.xlsx"');
+    header('Cache-Control: max-age=0');
+    // If you're serving to IE 9, then the following may be needed
+    header('Cache-Control: max-age=1');
+
+    // If you're serving to IE over SSL, then the following may be needed
+    header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+    header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+    header('Pragma: public'); // HTTP/1.0
+
+    $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+    $objWriter->save('php://output');
+    exit;
+});
+
+/**
+ * Get the trial numbers for each patient this student submitted answers for
+ */
+$app->get("/a_student_report_xl", function () use ($app, $PATH_STUDENTS, $parameters, $responseFmt) {
+    $data = $app->request->get();
+    $parameters->paramCheck($data, array(
+        "eppn",
+    ));
+
+    require "../Actions/Trial.php";
+    $trial = new Trial($app->log, $PATH_STUDENTS, $data["eppn"]);
+
+    echo $responseFmt->arrayToAPIObject(
+        $trial->getFullStudentReport()
+    );
+});
+
+$app->get("/all_student_report", function () use ($app, $PATH_STUDENTS, $responseFmt, $authUniqueId) {
+    require "../Actions/Trial.php";
+    $trial = new Trial($app->log, $PATH_STUDENTS, $authUniqueId);
+
+    echo $responseFmt->arrayToAPIObject(
+        $trial->getFullStudentReport()
+    );
+
+});
+
 // $app->get("/trial_numbers", function () use ($app, $PATH, $PATH_COURSES, $parameters, $authUniqueId) {
 //     $data = $app->request->get();
 //     $parameters->paramCheck($data, array(
@@ -140,25 +234,6 @@ $app->post("/submit_attempt", function () use ($app, $PATH_STUDENTS, $parameters
 //         $data["course"],
 //         $PATH_COURSES,
 //         $authUniqueId
-//     );
-// });
-
-/**
- * Adds a course to the courses list. Only course admins defined in courses/permissions.json may add courses.
- */
-// $app->post("/add_course", function () use ($app, $PATH, $parameters, $authUniqueId) {
-//     $data = json_decode($app->request->getBody(), true);
-//     $parameters->paramCheck($data, array(
-//         "course",
-//     ));
-
-//     require "../Actions/Comments.php";
-//     $comments = new Courses($app->log, $PATH_COURSES, $authUniqueId);
-
-//     echo $responseFmt->message(
-//         $comments->addCourse(
-//             $data["course"]
-//         )
 //     );
 // });
 
