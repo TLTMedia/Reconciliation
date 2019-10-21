@@ -15,7 +15,7 @@ class Trial
     public function getSubmittedTrialAmounts()
     {
         $allRawResponses = $this->__getRawStudentResponses();
-        if (!$allRawResponses) {
+        if (!$allRawResponses && !is_array($allRawResponses)) {
             return array(
                 "status" => "error",
                 "data"   => "unable to get all student responses",

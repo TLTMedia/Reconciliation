@@ -22,6 +22,7 @@ export class InterfaceController {
          */
         this.modal = new Modal({
             state: state,
+            toast: toast,
             ui: this
         });
 
@@ -67,12 +68,18 @@ export class InterfaceController {
      */
     show_patient(patient_id) {
         this.state.current_patient = patient_id;
+        this.state["current_attempt"] = {};
+
+        /**
+         * Hide the modal
+         */
+        this.modal.close_modal();
 
         /**
          * Shows patient intro during the med selection phase
          */
         $('.patient-intro').show();
-        $('.patient-intro-body').html(this.state['patients'][patient_id].info.Intro);
+        $('.patient-intro-body').html(this.state['patients'][patient_id].info.Synopsis);
 
         let medications = this.state['patients'][patient_id].medications;
 
@@ -122,17 +129,22 @@ export class InterfaceController {
         $("#medGrid").append(
             $('<button/>', {
                 value: "submit",
-                id: "myBtn",
+                id: "submit-attempt",
                 class: "btn-primary",
                 html: "Submit",
+            }).on("click", () => {
+                this.ui_events.submit_patient_evaluation()
             })
         );
 
-        $('button').on("click", () => {
-            this.ui_events.submit_patient_evaluation()
+        $('input').on("click", event => {
+            this.ui_events.bind_radio_choice_click(event);
         });
-        $('input').on("click", radio);
-        $('select').on("change", select);
+
+        $('select').on("change", event => {
+            this.ui_events.bind_select_choice_click(event);
+        });
+
         $('#medGrid').show();
     }
 

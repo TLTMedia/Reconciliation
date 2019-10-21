@@ -10,18 +10,19 @@ export class Modal {
         this.modal = document.getElementById("myModal");
 
         // Get the <span> element that closes the modal
-        let closeButtons = document.getElementsByClassName("modal-close-action");
+        //let closeButtons = document.getElementsByClassName("modal-close-action");
 
         // When the user clicks the button, open the modal
         // When the user clicks on <span> (x), close the modal
-        Array.from(closeButtons).forEach(closer => {
-            closer.onclick = () => {
-                if (closer.classList.contains("modal-reset-hash")) {
-                    history.pushState(null, null, ' '); // remove the hash, but preserves history so back button works
-                }
-                this.modal.style.display = "none";
-            }
-        });
+        // Array.from(closeButtons).forEach(closer => {
+        //     closer.onclick = () => {
+        //         if (closer.classList.contains("modal-reset-hash")) {
+        //             history.pushState(null, null, ' '); // remove the hash, but preserves history so back button works
+        //         }
+
+        //         this.close_modal();
+        //     }
+        // });
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
@@ -34,9 +35,9 @@ export class Modal {
 
     show_modal({ content, button_text = "Close", title = "status", show_cancel = true } = {}) {
         if (show_cancel) {
-            $(".modal-close-btn").show();
+            $("#modal-secondary-action").show();
         } else {
-            $(".modal-close-btn").hide();
+            $("#modal-secondary-action").hide();
         }
 
         this.modal.style.display = "block";
@@ -61,8 +62,30 @@ export class Modal {
         this.reset_main_action();
 
         $("#modal-main-action").one("click", () => {
+            location.hash = parseInt(patient_id);
             this.ui.reset_med_grid_headers();
             this.ui.show_patient(patient_id);
+        });
+    }
+
+    set_secondary_action_close_modal_reset_hash() {
+        $("#modal-secondary-action").one("click", () => {
+            this.close_modal();
+
+            /**
+             * Only reset hash if there is no patient currently selected
+             */
+            if (!this.state.current_patient) {
+                // removes the location.hash but also preserves history so pressing back button in browser works correctly
+                history.pushState(null, null, ' ');
+            } else {
+                /**
+                 * TODO: we successfully don't push ' ' into the hash if we're viewing a patient already and press cancel
+                 * (cancel on the modal dropdown to view other patients)
+                 * BUT... the hash gets updated to the new patient immediately onclick...
+                 * either revert the hash to the current patient, or only update the hash after view_patient() is successful
+                 */
+            }
         });
     }
 
@@ -72,15 +95,17 @@ export class Modal {
 
     reset_attempt_styling() {
         $("#attempt-current").css({ "color": "black" });
-        $("#modal-main-action").prop("disabled", false);
     }
 
     user_max_attempts() {
         $("#attempt-current").css({ "color": "red" });
-        $("#modal-main-action").prop("disabled", true);
     }
 
     set_current_attempt(attempt) {
+        if (parseInt(attempt) >= 2) {
+            this.user_max_attempts();
+        }
+
         $("#attempt-current").html(attempt);
     }
 }

@@ -106,6 +106,26 @@ $app->get("/all_patients_data", function () use ($app) {
     echo "{\"status\":\"ok\", \"data\": " . file_get_contents("../../json/data.json") . "}";
 });
 
+/**
+ * Submit a students attempt
+ */
+$app->post("/submit_attempt", function () use ($app, $PATH_STUDENTS, $parameters, $responseFmt, $authUniqueId) {
+    $data = json_decode($app->request->getBody(), true);
+    $parameters->paramCheck($data, array(
+        "attempt", "patient",
+    ));
+
+    require "../Actions/Student.php";
+    $student = new Student($app->log, $PATH_STUDENTS, $authUniqueId);
+
+    echo $responseFmt->arrayToAPIObject(
+        $student->submitStudentAttempt(
+            $data["patient"],
+            $data["attempt"]
+        )
+    );
+});
+
 // $app->get("/trial_numbers", function () use ($app, $PATH, $PATH_COURSES, $parameters, $authUniqueId) {
 //     $data = $app->request->get();
 //     $parameters->paramCheck($data, array(

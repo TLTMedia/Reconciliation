@@ -12,7 +12,7 @@ export class Toast {
             heading: heading,
             text: message,
             showHideTransition: 'slide',
-            icon: heading.toLowerCase
+            icon: heading.toLowerCase()
         })
     }
 }

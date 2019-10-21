@@ -21,4 +21,17 @@ export class StudentData {
 
         return await trials_data;
     }
+
+    async submit_attempt() {
+        let trial_data = this.api.request({
+            endpoint: 'submit_attempt',
+            method: "POST",
+            data: {
+                patient: this.state.current_patient,
+                attempt: this.state.current_attempt,
+            },
+        });
+
+        return await trial_data;
+    }
 }
