@@ -84,10 +84,29 @@ $app->get("/student_init", function () use ($app, $PATH_STUDENTS, $responseFmt, 
     );
 });
 
-// /**
-//  * Get the current trial number of a student on a patient.
-//  */
-// $app->get("/trial_number", function () use ($app, $PATH, $PATH_COURSES, $parameters, $authUniqueId) {
+/**
+ * Get the trial numbers for each patient this student submitted answers for
+ */
+$app->get("/submitted_trials_data", function () use ($app, $PATH_STUDENTS, $responseFmt, $authUniqueId) {
+    require "../Actions/Trial.php";
+    $trial = new Trial($app->log, $PATH_STUDENTS, $authUniqueId);
+
+    echo $responseFmt->arrayToAPIObject(
+        $trial->getSubmittedTrialAmounts()
+    );
+});
+
+/**
+ * TODO: Temporary~ endpoint to serve the patient data from this router
+ * Get all patient data
+ */
+$app->get("/all_patients_data", function () use ($app) {
+    $app->log->info("Using depreciated endpoint /all_patients_data");
+
+    echo "{\"status\":\"ok\", \"data\": " . file_get_contents("../../json/data.json") . "}";
+});
+
+// $app->get("/trial_numbers", function () use ($app, $PATH, $PATH_COURSES, $parameters, $authUniqueId) {
 //     $data = $app->request->get();
 //     $parameters->paramCheck($data, array(
 //         "creator", "course",

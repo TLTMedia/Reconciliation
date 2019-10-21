@@ -1,0 +1,28 @@
+{
+    "patient_id": 0,
+    "start_time": 1571616400,
+    "end_time": 1571616493,
+    "trial_number": 2,
+    "medications": [
+        {
+            "name": "Amlodipine",
+            "source": "home",
+            "dosage": "5mg",
+            "route": "oral",
+            "frequency": "once daily",
+            "stop": true,
+            "continue": false,
+            "modify": "10mg once daily"
+        },
+        {
+            "name": "Amlodipine",
+            "source": "hospital",
+            "dosage": "5mg",
+            "route": "oral",
+            "frequency": "once daily",
+            "stop": true,
+            "continue": false,
+            "modify": "10mg once daily"
+        }
+    ]
+}

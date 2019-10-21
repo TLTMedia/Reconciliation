@@ -1,46 +1,40 @@
-const state = {};
-
-$(function () {
-    $.getJSON('api/public/student_init', function (data) {
-        if (data.status != "ok") {
-            alert("A server error occured. \nPlease contact: 'paul.st.denis@stonybrook.edu' with the subject 'Reconciliation Server Error'\nAnd include this error: " + data.data);
-            console.error("Unable to create a required directory/file.");
-        }
-    });
-
-    $.get('json/data.json', function (patients) {
-        state['patients'] = patients;
-        init(patients);
-    }).done(() => {
-        // console.log(state.patients[2].medications);
-    });
-})
-
-function init(patients) {
+/**
+ * Init script
+ */
+async function init({ state: state, ui: ui, student_data: student_data, patient_data: patient_data }) {
     /**
-     * Show the welcome text
+     * Initialize the backend user if necessary
      */
-    $("#medGrid").html(`
-        <center>
-            <br />
-            <p>Welcome to Reconciliation. Choose a patient to diagnose from the dropdown list above.</p>
-        </center>
-    `);
+    let res = await student_data.student_init();
+    console.log(res); // should be "student ok"
 
-    // When no hash is present and the back button is pressed; fully refresh the page.	
-    window.onhashchange = () => {
-        if (!this.location.hash) {
-            this.window.location.href = this.window.location.href;
-        }
-    }
+    /**
+     * Get submitted trials data
+     */
+    let submitted_trials = await student_data.submitted_trials_data();
+    state.submitted = submitted_trials;
 
-    for (patient in patients) {
-        $('#patientList').append($('<a/>', {
-            id: "patient_" + patient,
-            class: "dropdown-item",
-            html: patients[patient].info.Name
-        }).on("click", showPatientIntro));
-    }
+    /**
+     * Get the patient data
+     */
+    let patients_data = await patient_data.all_patients_data();
+    console.log(patients_data);
+    state.patients = patients_data;
+
+    /**
+     * Show welcome text
+     */
+    ui.show_welcome_message();
+
+    /**
+     * Set global event listeners 
+     */
+    ui.ui_events.bind_window_hash_change();
+
+    /**
+     * Populate the patient names in the patients list
+     */
+    ui.populate_patient_list();
 
     /** 
      * If a hash is present when the page loads - then parse it and load that patient by mimicking a click
@@ -51,137 +45,21 @@ function init(patients) {
     }
 }
 
-function resetMedGrid() {
-    $("#medGrid").empty();
-    $("#medGrid").html(`
-        <div class="row">
-            <div id="medication" class="col">Medication</div>
-            <div id="source" class="col">Source</div>
-            <div id="dose" class="col">Dose</div>
-            <div id="route" class="col">Route</div>
-            <div id="frequency" class="col">Frequency</div>
-            <div id="stop" class="col">Stop</div>
-            <div id="continue" class="col">Continue</div>
-            <div id="modify" class="col">Modify</div>
-        </div>
-    `);
-}
-
-function showPatientIntro(event) {
-    let patientId = event.target.id.split("_")[1];
-    location.hash = parseInt(patientId);
-    showModal(state['patients'][patientId].info.Intro, "Begin", "Patient Introduction");
-    $("#modal-main-action").off().one("click", () => {
-        resetMedGrid();
-        showPatient(patientId);
-    });
-}
-
-function showPatient(patientId) {
-    state.currentPatient = patientId;
-
-    /**
-     * Shows patient intro during the med selection phase
-     */
-    $('.patient-intro').show();
-    $('.patient-intro-body').html(state['patients'][patientId].info.Intro);
-
-    let medications = state['patients'][patientId].medications;
-
-    for (i in medications) {
-        let groupClass = `group_${medications[i].group}`;
-
-        let row = $("<div/>", {
-            class: `row ${groupClass} med_${medications[i]["Medication"]}_${medications[i]["Source"]}`
-        });
-
-        ["Medication", "Source", "Dose", "Route", "Frequency"].forEach(function (element) {
-            row.append($('<div/>', {
-                class: `col ${medications[i][element]}`,
-                html: medications[i][element]
-            }));
-        });
-
-        let continueVal = medications[i]["Current Dose numeric"];
-
-        row.append([
-            $("<input/>", {
-                type: "radio",
-                name: "med_" + i,
-                value: "0",
-                class: "col",
-                "data-action": "stop"
-            }),
-            $("<input/>", {
-                type: "radio",
-                name: "med_" + i,
-                value: continueVal,
-                class: "col",
-                "data-action": "continue"
-            }),
-            $('<select/>', {
-                name: "med_modify_" + i,
-                class: "col"
-            })
-        ]);
-
-        $("#medGrid").append(row);
-
-        populateModifications(patientId, i);
-    }
-
-    $("#medGrid").append(
-        $('<button/>', {
-            value: "submit",
-            id: "myBtn",
-            class: "btn-primary",
-            html: "Submit",
-        })
-    );
-
-    $('button').on("click", button);
-    $('input').on("click", radio);
-    $('select').on("change", select);
-    $('#medGrid').show();
-}
-
-function button(evt) {
-    showModal();
-    var groupSet = new Set();
-    var status = ""
-    var report = ""
-    for (i in state['patients'][state.currentPatient].medications) {
-        medication = state['patients'][state.currentPatient].medications[i];
-        groupSet.add(medication.group)
-        if (!medication.pickedOption) {
-            status += `You need to set a course of action for ${
-                medication.Medication},  ${medication.Source} <br/>`;
-        }
-    }
-    state['patients'][state.currentPatient].groupCount = groupSet.size
-    if (status == "") {
-        //  status = report
-        status = response();
-    }
-
-    $('.modal-body').html(status)
-}
-
 function response() {
-    var responses = state['patients'][state.currentPatient].responses
+    var responses = state['patients'][state.current_patient].responses
     var output = ""
-    state['patients'][state.currentPatient].tries =
-        state['patients'][state.currentPatient].tries + 1 || 0;
+    state['patients'][state.current_patient].tries =
+        state['patients'][state.current_patient].tries + 1 || 0;
 
-    var groupCount = state['patients'][state.currentPatient].groupCount;
+    var groupCount = state['patients'][state.current_patient].groupCount;
     var alertColor = "white"
-    if (state['patients'][state.currentPatient].tries) {
+    if (state['patients'][state.current_patient].tries) {
         alertColor = "yellow"
     }
     var results = {
-        patientId: state.currentPatient,
-        patientName: state['patients'][state.currentPatient].info['Name'],
-        try: state['patients'][state.currentPatient].tries,
+        patientId: state.current_patient,
+        patientName: state['patients'][state.current_patient].info['Name'],
+        try: state['patients'][state.current_patient].tries,
         groupInfo: []
     };
 
@@ -223,7 +101,7 @@ function response() {
     if (output == "") {
         output = "Response for all correct meds prescribed";
     } else {
-        if (!state['patients'][state.currentPatient].tries) {
+        if (!state['patients'][state.current_patient].tries) {
             output = "Try Again!"
         }
     }
@@ -243,7 +121,7 @@ function response() {
 function radio(evt) {
     var medId = $(this).attr("name").split("_")[1]
     $(`select[name='med_modify_${medId}']`)[0].selectedIndex = 0;
-    state['patients'][state.currentPatient].medications[medId].pickedOption =
+    state['patients'][state.current_patient].medications[medId].pickedOption =
         true;
     $(this).parent().attr("data-medAmount", $(this).val())
     $(this).parent().attr("data-action", $(this).data("action"))
@@ -252,33 +130,14 @@ function radio(evt) {
 function select(evt) {
     var medId = $(this).attr("name").split("_")[2];
     if ($(this)[0].selectedIndex) {
-        state['patients'][state.currentPatient].medications[medId].pickedOption =
+        state['patients'][state.current_patient].medications[medId].pickedOption =
             true;
         $(this).parent().attr("data-medAmount", $(this).val())
         $(this).parent().attr("data-action", $(evt.currentTarget).text())
         console.log($(`#${evt.currentTarget.name} option:selected`))
         $(`input[name='med_${medId}']`).prop('checked', false);
     } else {
-        state['patients'][state.currentPatient].medications[medId].pickedOption =
+        state['patients'][state.current_patient].medications[medId].pickedOption =
             false;
-    }
-}
-
-function populateModifications(patientId, i) {
-    var a = -1;
-    var med = state['patients'][patientId].medications[i];
-    var doSend = $('<div/>')
-    var select = $("select[name='med_modify_" + i + "']")
-    med["Modify 0 display"] = "Modify Prescription";
-
-    while (a++ < 7) {
-        var key = `Modify ${a} display`
-        var option = med[key];
-        var key = `Modify ${a} numeric`;
-        var value = med[key] || 0;
-        if (option) {
-            select.append($("<option/>", { value: value, html: option }))
-        } else
-            break;
     }
 }
