@@ -1,0 +1,67 @@
+{
+    "patient_id": "0",
+    "trial_number": 1,
+    "submitted_time": "2019-10-21",
+    "response": "Her diabetes regimen was underdosed, and she returns with hyperglycemia. Given that the patient was on metformin at home, she should have her home metformin continued. She should not have been prescribed aspart insulin at home because she has no supplies, would require education, and her current condition does not warrant it. \nHer asthma inhaler was underdosed, and she returns with asthma exacerbation. She requires her home ProAir HFA to be continued. The nebulizer solution was only prescribed while inpatient. If given a prescription, she has no nebulizer machine at home and would not be able to use it. \nHer Symbicort was underdosed, and she returns with COPD exacerbation. The inciting event for the patient's exacerbation was the lack of her home Symbicort prescription. Without a new refill she would quickly return to the clinic with worsening symptoms. \nHer Prednisone was overdosed, and she have unexpected weight gain. The prednisone course was for 5 days of 40mg once daily. Being discharged on Day 3, she needed 2 additional days. Often times, the pharmacy is not able to dispense the desired amount of prednisone as a since tablet, in this case, the pharmacy had tabs of 10mg. Therefore, the patient required 8 tabs of 10mg, for her to take 2 additional days of 40mg once daily. \n",
+    "correct": false,
+    "submission": {
+        "group_1": {
+            "Metformin_Home": {
+                "amt": "0",
+                "action": "stop"
+            },
+            "Aspart_undefined": {
+                "amt": "10",
+                "action": "continue"
+            }
+        },
+        "group_2": {
+            "ProAir_undefined": {
+                "amt": "0",
+                "action": "stop"
+            },
+            "Albuterol_undefined": {
+                "amt": "0",
+                "action": "continue"
+            }
+        },
+        "group_3": {
+            "Atorvastatin_Home": {
+                "amt": "0",
+                "action": "stop"
+            },
+            "Atorvastatin_Hospital": {
+                "amt": "40",
+                "action": "continue"
+            }
+        },
+        "group_4": {
+            "Famotidine_Home": {
+                "amt": "0",
+                "action": "stop"
+            },
+            "Famotidine_Hospital": {
+                "amt": "40",
+                "action": "continue"
+            }
+        },
+        "group_5": {
+            "Symbicort_undefined": {
+                "amt": "0",
+                "action": "continue"
+            }
+        },
+        "group_6": {
+            "Azithromycin_Hospital": {
+                "amt": "500",
+                "action": "modify"
+            }
+        },
+        "group_7": {
+            "Prednisone_Hospital": {
+                "amt": "180",
+                "action": "modify"
+            }
+        }
+    }
+}

@@ -23,7 +23,7 @@ export class StudentData {
     }
 
     async submit_attempt() {
-        let trial_data = await this.api.request({
+        let trial_data = this.api.request({
             endpoint: 'submit_attempt',
             method: "POST",
             data: {
@@ -32,8 +32,11 @@ export class StudentData {
             },
         });
 
-        if (trial_data == "") {
+        let response_data = await trial_data;
+        if (response_data == "") {
             return "Success!";
+        } else {
+            return response_data;
         }
     }
 }

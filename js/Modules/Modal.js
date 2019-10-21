@@ -9,26 +9,12 @@ export class Modal {
          */
         this.modal = document.getElementById("myModal");
 
-        // Get the <span> element that closes the modal
-        //let closeButtons = document.getElementsByClassName("modal-close-action");
-
-        // When the user clicks the button, open the modal
-        // When the user clicks on <span> (x), close the modal
-        // Array.from(closeButtons).forEach(closer => {
-        //     closer.onclick = () => {
-        //         if (closer.classList.contains("modal-reset-hash")) {
-        //             history.pushState(null, null, ' '); // remove the hash, but preserves history so back button works
-        //         }
-
-        //         this.close_modal();
-        //     }
-        // });
-
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
+        window.onclick = event => {
             if (event.target == this.modal) {
                 this.modal.style.display = "none";
-                history.pushState(null, null, ' '); // remove the hash, but preserves history so back button works
+                // TODO: fix
+                // history.pushState(null, null, ' '); // remove the hash, but preserves history so back button works
             }
         }
     }

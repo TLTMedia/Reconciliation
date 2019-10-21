@@ -9,6 +9,22 @@ class Trial
         $this->studentEppn  = $studentEppn;
     }
 
+    public function getAllStudents()
+    {
+        $allRawResponses = $this->__getDirectoryContents($this->studentsPath);
+        if (!$allRawResponses && !is_array($allRawResponses)) {
+            return array(
+                "status" => "error",
+                "data"   => "unable to get all student responses",
+            );
+        }
+
+        return array(
+            "status" => "ok",
+            "data"   => $allRawResponses,
+        );
+    }
+
     /**
      * Get all the submitted data of a student
      */

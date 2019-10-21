@@ -43,18 +43,21 @@ class Student
             $isCorrect = true;
         }
 
+        $submissionTime = time();
+
         /**
          * First save the attempt
          */
         $fullAttemptData = array(
-            "patient_id"   => $patientId,
-            "trial_number" => $attemptNum,
-            "response"     => $calculatedResults,
-            "correct"      => $isCorrect,
-            "submission"   => $attemptData,
+            "patient_id"     => $patientId,
+            "trial_number"   => $attemptNum,
+            "response"       => $calculatedResults,
+            "correct"        => $isCorrect,
+            "submitted_time" => date('Y-m-d', $submissionTime),
+            "submission"     => $attemptData,
         );
 
-        if (!file_put_contents($this->studentsPath . $this->studentEppn . "/responses/" . time() . ".json", json_encode($fullAttemptData))) {
+        if (!file_put_contents($this->studentsPath . $this->studentEppn . "/responses/" . $submissionTime . ".json", json_encode($fullAttemptData))) {
             return array(
                 "status" => "error",
                 "data"   => "unable to save attempt",
