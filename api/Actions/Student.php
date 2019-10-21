@@ -2,10 +2,11 @@
 
 class Student
 {
-    public function __construct($logger, $studentsPath, $studentEppn)
+    public function __construct($logger, $studentsPath, $patientsPath, $studentEppn)
     {
         $this->logger       = $logger;
         $this->studentsPath = $studentsPath;
+        $this->patientsPath = $patientsPath;
         $this->studentEppn  = $studentEppn;
     }
 
@@ -43,31 +44,114 @@ class Student
             $isCorrect = true;
         }
 
+        /**
+         * Get the hash submission time, which will be used as the file name and to timestamp the completion of the attempt
+         */
         $submissionTime = time();
 
         /**
+         * Check if the patient dir exists, otherwise make it
+         */
+        if (!$this->__createDirectory($this->patientsPath . "patient_" . $patientId)) {
+            return array(
+                "status" => "error",
+                "data"   => "unable to create patient directory",
+            );
+        } else {
+            if (!$this->__createDirectory($this->patientsPath . "patient_" . $patientId . "/responses")) {
+                return array(
+                    "status" => "error",
+                    "data"   => "unable to create patient responses directory",
+                );
+            }
+        }
+
+        /**
+         * Get attempt data amt from the attemptData
+         */
+        $attemptDataAmt = $this->__getAttemptDataAmt($attemptData);
+
+        /**
+         * Get actual data for a patientId
+         */
+        $actualDataAmt = $this->__getActualPatientResults($patientId);
+
+        /**
          * First save the attempt
+         *
+         * TODO: elapsed time
          */
         $fullAttemptData = array(
-            "patient_id"     => $patientId,
-            "trial_number"   => $attemptNum,
-            "response"       => $calculatedResults,
-            "correct"        => $isCorrect,
-            "submitted_time" => date('Y-m-d', $submissionTime),
-            "submission"     => $attemptData,
+            "student_id"       => $this->studentEppn,
+            "patient_id"       => $patientId,
+            "trial_number"     => $attemptNum,
+            "response"         => $calculatedResults,
+            "correct"          => $isCorrect,
+            "submitted_time"   => date('Y-m-d', $submissionTime),
+            "elapsed_time_sec" => 92,
+            "submission"       => $attemptData,
+            "submit_amt"       => $attemptDataAmt,
+            "actual_amt"       => $actualDataAmt,
         );
 
         if (!file_put_contents($this->studentsPath . $this->studentEppn . "/responses/" . $submissionTime . ".json", json_encode($fullAttemptData))) {
             return array(
                 "status" => "error",
-                "data"   => "unable to save attempt",
+                "data"   => "unable to save attempt for student",
             );
         } else {
-            return array(
-                "status" => "ok",
-                "data"   => $calculatedResults,
-            );
+            if (!file_put_contents($this->patientsPath . "patient_" . $patientId . "/responses/" . $submissionTime . ".json", json_encode($fullAttemptData))) {
+                return array(
+                    "status" => "error",
+                    "data"   => "unable to save attempt for patient",
+                );
+            } else {
+                return array(
+                    "status" => "ok",
+                    "data"   => $calculatedResults,
+                );
+            }
         }
+    }
+
+    /**
+     * Get attempt data amts
+     */
+    private function __getAttemptDataAmt($attemptData)
+    {
+        $attemptAmts = array();
+        $i           = 1;
+        foreach ($attemptData as $medications) {
+            $attemptAmts["group_" . $i] = 0;
+
+            foreach ($medications as $medication) {
+                $attemptAmts["group_" . $i] += doubleval($medication["amt"]);
+            }
+
+            $i++;
+        }
+
+        return $attemptAmts;
+    }
+
+    /**
+     * Get the actual patient results to match to the submitted student response
+     */
+    private function __getActualPatientResults($patientId)
+    {
+        $data = file_get_contents("../../json/data.json");
+        if (!$data) {
+            return "Unable to get actual patient results";
+        }
+
+        $data                     = json_decode($data);
+        $actualResults            = array();
+        $patientSolutionResponses = $data[$patientId]->responses;
+        for ($i = 1; $i < count($patientSolutionResponses); $i++) {
+            $actualResults["group_" . $patientSolutionResponses[$i][0]] = doubleval($patientSolutionResponses[$i][1]);
+        }
+
+        return $actualResults;
     }
 
     /**

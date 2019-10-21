@@ -9,6 +9,25 @@ class Trial
         $this->studentEppn  = $studentEppn;
     }
 
+    /**
+     * TODO: $patientsDir should be in the constructor
+     */
+    public function getAllPatients($patientsDir)
+    {
+        $allRawResponses = $this->__getDirectoryContents($patientsDir);
+        if (!$allRawResponses && !is_array($allRawResponses)) {
+            return array(
+                "status" => "error",
+                "data"   => "unable to get all patient responses",
+            );
+        }
+
+        return array(
+            "status" => "ok",
+            "data"   => $allRawResponses,
+        );
+    }
+
     public function getAllStudents()
     {
         $allRawResponses = $this->__getDirectoryContents($this->studentsPath);
@@ -16,6 +35,27 @@ class Trial
             return array(
                 "status" => "error",
                 "data"   => "unable to get all student responses",
+            );
+        }
+
+        return array(
+            "status" => "ok",
+            "data"   => $allRawResponses,
+        );
+    }
+
+    /**
+     * Get all the submitted data of a patient
+     *
+     * TODO: $patientsDir should be in the constructor
+     */
+    public function getFullPatientReport($patientsDir)
+    {
+        $allRawResponses = $this->__getRawPatientResponses($patientsDir);
+        if (!$allRawResponses && !is_array($allRawResponses)) {
+            return array(
+                "status" => "error",
+                "data"   => "unable to get all patient responses",
             );
         }
 
@@ -70,6 +110,28 @@ class Trial
             "status" => "ok",
             "data"   => $trialAmounts,
         );
+    }
+
+    /**
+     * Get all raw reponse data for a specific patient
+     */
+    private function __getRawPatientResponses($patientsDir)
+    {
+        $allResponseFiles = $this->__getDirectoryContents($patientsDir . $this->studentEppn . "/responses/", true);
+        $responseDataObj  = array();
+        foreach ($allResponseFiles as $responseFile) {
+            $fileData = file_get_contents($responseFile);
+            if (!$fileData) {
+                $this->logger->error("unable to read/open a response file: " . $responseFile);
+
+                return false;
+            }
+
+            $fileData          = json_decode($fileData);
+            $responseDataObj[] = $fileData;
+        }
+
+        return $responseDataObj;
     }
 
     /**

@@ -11,10 +11,15 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
     /* text-align: center; */
     background-color: var(--rec-secondary-fnt);
     color: var(--rec-primary-fnt);
+}
+
+.container {
+    box-sizing: border-box;
+    max-width: 95%;
 }
 
 .navbar {

@@ -1,0 +1,55 @@
+{
+    "student_id": "ikleiman@stonybrook.edu",
+    "patient_id": "3",
+    "trial_number": 1,
+    "response": "Lord Grantham syncopized and he was hypotensive because you precribed too much antihypertensives.\n",
+    "correct": false,
+    "submitted_time": "2019-10-21",
+    "elapsed_time_sec": 92,
+    "submission": {
+        "group_1": {
+            "atorvastatin_Home": {
+                "amt": "40",
+                "action": "modify"
+            },
+            "atorvastatin_Hospital": {
+                "amt": "40",
+                "action": "modify"
+            }
+        },
+        "group_2": {
+            "Eliquis_Hospital": {
+                "amt": "10",
+                "action": "modify"
+            }
+        },
+        "group_3": {
+            "Metoprolol_Hospital": {
+                "amt": "100",
+                "action": "modify"
+            }
+        },
+        "group_4": {
+            "Lisinopril_Home": {
+                "amt": "40",
+                "action": "modify"
+            },
+            "Lisinopril_Hospital": {
+                "amt": "10",
+                "action": "modify"
+            }
+        }
+    },
+    "submit_amt": {
+        "group_1": 80,
+        "group_2": 10,
+        "group_3": 100,
+        "group_4": 50
+    },
+    "actual_amt": {
+        "group_1": 80,
+        "group_2": 10,
+        "group_3": 100,
+        "group_4": 20
+    }
+}
