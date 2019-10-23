@@ -190,7 +190,7 @@ export class InterfaceController {
         $(this.id_constants["med_grid"]).html(`
             <center>
                 <br />
-                <p>Welcome to Reconciliation. Choose a patient to diagnose from the dropdown list above.</p>
+                <p style="font-size: 100%;">Welcome to Reconciliation. Choose a patient to diagnose from the dropdown list above.</p>
             </center>
         `);
     }

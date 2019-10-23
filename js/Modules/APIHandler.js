@@ -31,7 +31,6 @@ export class APIHandler {
             method: method,
             data: data,
             dataType: 'json',
-            async: false,
             cache: false,
             contentType: false,
             processData: false
