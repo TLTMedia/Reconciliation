@@ -38,7 +38,9 @@ class Student
             // it's not fatal, so no error
             return array(
                 "status" => "ok",
-                "data"   => "Maximum submissions reached.",
+                "data"   => array(
+                    "message" => "Maximum submissions reached.",
+                ),
             );
         }
 
@@ -62,13 +64,17 @@ class Student
         if (!$this->__createDirectory($this->patientsPath . "patient_" . $patientId)) {
             return array(
                 "status" => "error",
-                "data"   => "unable to create patient directory",
+                "data"   => array(
+                    "message" => "Unable to create patient directory",
+                ),
             );
         } else {
             if (!$this->__createDirectory($this->patientsPath . "patient_" . $patientId . "/responses")) {
                 return array(
                     "status" => "error",
-                    "data"   => "unable to create patient responses directory",
+                    "data"   => array(
+                        "message" => "Unable to create patient responses directory",
+                    ),
                 );
             }
         }
@@ -85,8 +91,6 @@ class Student
 
         /**
          * First save the attempt
-         *
-         * TODO: elapsed time
          */
         $fullAttemptData = array(
             "student_id"       => $this->studentEppn,
@@ -101,21 +105,38 @@ class Student
             "actual_amt"       => $actualDataAmt,
         );
 
+        /**
+         * Get the incorrect groups
+         */
+        $incorrectGroups = array();
+        for ($i = 1; $i <= count($attemptDataAmt); $i++) {
+            if ($attemptDataAmt["group_" . $i] != $actualDataAmt["group_" . $i]) {
+                $incorrectGroups[] = $i;
+            }
+        }
+
         if (!file_put_contents($this->studentsPath . $this->studentEppn . "/responses/" . $submissionTime . ".json", json_encode($fullAttemptData))) {
             return array(
                 "status" => "error",
-                "data"   => "unable to save attempt for student",
+                "data"   => array(
+                    "message" => "Unable to save attempt for student",
+                ),
             );
         } else {
             if (!file_put_contents($this->patientsPath . "patient_" . $patientId . "/responses/" . $submissionTime . ".json", json_encode($fullAttemptData))) {
                 return array(
                     "status" => "error",
-                    "data"   => "unable to save attempt for patient",
+                    "data"   => array(
+                        "message" => "Unable to save attempt for patient",
+                    ),
                 );
             } else {
                 return array(
                     "status" => "ok",
-                    "data"   => $calculatedResults,
+                    "data"   => array(
+                        "message"   => $calculatedResults,
+                        "incorrect" => $incorrectGroups,
+                    ),
                 );
             }
         }
