@@ -29,6 +29,7 @@ export class StudentData {
             data: {
                 patient: this.state.current_patient,
                 attempt: this.state.current_attempt,
+                time: parseInt(this.state.end_time - this.state.start_time),
             },
         });
 

@@ -139,6 +139,7 @@ export class InterfaceController {
                 class: "btn-primary",
                 html: "Submit",
             }).on("click", () => {
+                this.state.end_time = Math.floor(Date.now() / 1000);
                 this.ui_events.submit_patient_evaluation()
             })
         );

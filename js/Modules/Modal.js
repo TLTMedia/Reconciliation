@@ -51,6 +51,7 @@ export class Modal {
             location.hash = parseInt(patient_id);
             this.ui.reset_med_grid_headers();
             this.ui.show_patient(patient_id);
+            this.state.start_time = Math.floor(Date.now() / 1000);
         });
     }
 
