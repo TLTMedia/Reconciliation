@@ -50,23 +50,6 @@ class MasterFormat
 
 class MasterFormatLine
 {
-    public function __construct()
-    {
-        // $this->student;
-        // $this->patient;
-        // $this->trial;
-        // $this->group;
-        // $this->entry;
-        // $this->location;
-        // $this->value_submitted;
-        // $this->value_actual;
-        // $this->action;
-        // $this->group_correct;
-        // $this->elapsed_time;
-        // $this->date;
-        // $this->trial_correct;
-    }
-
     public function setCommon(
         $student,
         $patient,

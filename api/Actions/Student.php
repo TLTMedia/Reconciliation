@@ -15,6 +15,13 @@ class Student
      */
     public function submitStudentAttempt($patientId, $attemptData, $time)
     {
+        $sorted = array();
+        for ($i = 1; $i <= count($attemptData); $i++) {
+            $sorted["group_$i"] = $attemptData["group_" . $i];
+        }
+
+        $attemptData = $sorted;
+
         /**
          * Get which trial # this is
          */

@@ -22,10 +22,6 @@ class Reporting
             );
         }
 
-        // return array(
-        //     "students" => $allStudents["data"],
-        // );
-
         require "MasterFormat.php";
         $master = new MasterFormat;
 
@@ -80,9 +76,6 @@ class Reporting
             }
         }
 
-        // return array(
-        //     "data" => $master->toCSV(),
-        // );
         return $master->toCSV();
     }
 }
