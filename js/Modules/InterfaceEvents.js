@@ -158,12 +158,9 @@ export class InterfaceEvents {
                  * Encoding fix
                  */
                 let [, encoding] = item.split("_");
-                console.log(encoding);
                 encoding = atob(encoding);
-                console.log(encoding);
 
                 let [med, source] = encoding.split("_");
-
                 this.state.current_attempt[current_group][med + "_" + source] = {
                     amt: med_amt,
                     action: med_action,
@@ -204,12 +201,9 @@ export class InterfaceEvents {
                  * Encoding fix
                  */
                 let [, encoding] = item.split("_");
-                console.log(encoding);
                 encoding = atob(encoding);
-                console.log(encoding);
 
                 let [med, source] = encoding.split("_");
-
                 this.state.current_attempt[current_group][med + "_" + source] = {
                     amt: med_amt,
                     action: med_action,
