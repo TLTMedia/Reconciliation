@@ -75,7 +75,7 @@ select {
     flex-wrap: no-wrap;
 }
 
-.column {
+.col {
     display: flex;
     flex-basis: 10%;
     align-items: center;
@@ -86,22 +86,14 @@ select {
     color: red;
 }
 
-.Home:before, .Hospital:before {
+/* .Home:before, .Hospital:before {
     content: '';
     height: 1.5rem;
     width: 1.5rem;
     margin-right: .1rem;
     margin-bottom: .1rem;
     background-size: 1.5rem;
-}
-
-.Hospital:before {
-    background: url(../img/hospital.svg) no-repeat;
-}
-
-.Home:before {
-    background: url(../img/house.svg) no-repeat;
-}
+} */
 
 input[type=submit] {
     border-radius: 5px;
