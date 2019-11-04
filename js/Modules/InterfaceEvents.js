@@ -51,6 +51,12 @@ export class InterfaceEvents {
                  * Submit the attempt
                  */
                 status = await this.student_data.submit_attempt();
+                if (attempts == 1) {
+                    /**
+                     * Don't show the results if its their first submission
+                     */
+                    status = "Try again!";
+                }
 
                 /**
                  * Update state and modal representation of attempt count
