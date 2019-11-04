@@ -154,7 +154,16 @@ export class InterfaceEvents {
         let med_action = $(parent).attr("data-action");
         $.each(class_list, (_, item) => {
             if (item.indexOf("med_") != -1) {
-                let [, med, source] = item.split("_");
+                /**
+                 * Encoding fix
+                 */
+                let [, encoding] = item.split("_");
+                console.log(encoding);
+                encoding = atob(encoding);
+                console.log(encoding);
+
+                let [med, source] = encoding.split("_");
+
                 this.state.current_attempt[current_group][med + "_" + source] = {
                     amt: med_amt,
                     action: med_action,
@@ -191,7 +200,16 @@ export class InterfaceEvents {
         let med_action = "modify";
         $.each(class_list, (_, item) => {
             if (item.indexOf("med_") != -1) {
-                let [, med, source] = item.split("_");
+                /**
+                 * Encoding fix
+                 */
+                let [, encoding] = item.split("_");
+                console.log(encoding);
+                encoding = atob(encoding);
+                console.log(encoding);
+
+                let [med, source] = encoding.split("_");
+
                 this.state.current_attempt[current_group][med + "_" + source] = {
                     amt: med_amt,
                     action: med_action,

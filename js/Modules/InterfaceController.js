@@ -87,8 +87,14 @@ export class InterfaceController {
         for (i in medications) {
             let groupClass = `group_${medications[i].group}`;
 
+            /**
+             * So that meds with spaces don't break (classes can't have spaces!)
+             */
+            let med_original = `${medications[i]["Medication"]}_${medications[i]["Source"]}`;
+            let med_encoded = "med_" + btoa(med_original);
+
             let row = $("<div/>", {
-                class: `row ${groupClass} med_${medications[i]["Medication"]}_${medications[i]["Source"]}`
+                class: "row " + groupClass + " " + med_encoded,
             });
 
             ["Medication", "Source", "Dose", "Route", "Frequency"].forEach(function (element) {
@@ -190,7 +196,7 @@ export class InterfaceController {
         $(this.id_constants["med_grid"]).html(`
             <center>
                 <br />
-                <p style="font-size: 100%;">Welcome to Reconciliation. Choose a patient to diagnose from the dropdown list above.</p>
+                <p>Welcome to Reconciliation. Choose a patient to diagnose from the dropdown list above.</p>
             </center>
         `);
     }
