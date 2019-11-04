@@ -15,6 +15,14 @@ body {
     color: var(--rec-primary-fnt);
 }
 
+.red-font {
+    color: red;
+}
+
+.admin {
+    display: none;
+}
+
 .container {
     box-sizing: border-box;
     max-width: 95%;

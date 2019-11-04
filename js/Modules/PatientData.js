@@ -7,10 +7,10 @@ export class PatientData {
     }
 
     async all_patients_data() {
-        let student_init = this.api.request({
+        let all_patients = this.api.request({
             endpoint: 'all_patients_data',
         });
 
-        return await student_init;
+        return await all_patients;
     }
 }

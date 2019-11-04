@@ -178,6 +178,69 @@ $app->get("/generate_master_doc", function () use ($app, $PATH_STUDENTS, $PATH_E
 });
 
 /**
+ * Reset My Student Data
+ */
+$app->get("/reset_my_data", function () use ($app, $PATH_STUDENTS, $authUniqueId, $authAdmins) {
+    if (!in_array($authUniqueId, $authAdmins)) {
+        echo "invalid permissions";
+        exit;
+    }
+
+    $files = glob($PATH_STUDENTS . $authUniqueId . "/responses/*"); // get all file names
+    foreach ($files as $file) {
+        if (is_file($file)) {
+            unlink($file);
+        }
+    }
+
+    echo "success";
+});
+
+/**
+ * Reset All Student Data
+ */
+$app->get("/reset_all_student_data", function () use ($app, $PATH_STUDENTS, $authUniqueId, $authAdmins) {
+    if (!in_array($authUniqueId, $authAdmins)) {
+        echo "invalid permissions";
+        exit;
+    }
+
+    $studentsDirs = glob($PATH_STUDENTS . '/*', GLOB_ONLYDIR);
+    foreach ($studentsDirs as $student) {
+        $files = glob($PATH_STUDENTS . $student . "/responses/*"); // get all file names
+        foreach ($files as $file) {
+            if (is_file($file)) {
+                unlink($file);
+            }
+        }
+    }
+
+    echo "success";
+});
+
+/**
+ * Reset All Patient Data
+ */
+$app->get("/reset_all_patient_data", function () use ($app, $PATH_PATIENTS, $authUniqueId, $authAdmins) {
+    if (!in_array($authUniqueId, $authAdmins)) {
+        echo "invalid permissions";
+        exit;
+    }
+
+    $studentsDirs = glob($PATH_PATIENTS . '/*', GLOB_ONLYDIR);
+    foreach ($studentsDirs as $student) {
+        $files = glob($PATH_PATIENTS . $student . "/responses/*"); // get all file names
+        foreach ($files as $file) {
+            if (is_file($file)) {
+                unlink($file);
+            }
+        }
+    }
+
+    echo "success";
+});
+
+/**
  * NOTE:
  * NOTE: Below endpoints are deprecated as they produce now unnecessary data.
  * NOTE:

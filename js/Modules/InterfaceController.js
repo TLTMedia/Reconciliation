@@ -201,4 +201,10 @@ export class InterfaceController {
             </center>
         `);
     }
+
+    check_permissions() {
+        if (this.state.user_type == "admin") {
+            $(".admin").show();
+        }
+    }
 }

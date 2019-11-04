@@ -60,7 +60,7 @@ async function init({ state: state, ui: ui, student_data: student_data, patient_
     /**
      * Initialize the backend user if necessary
      */
-    await student_data.student_init();
+    state.user_type = await student_data.student_init();
 
     /**
      * Get submitted trials data
@@ -93,4 +93,9 @@ async function init({ state: state, ui: ui, student_data: student_data, patient_
      * If a hash is present when the page loads - then parse it and load that patient by mimicking a click
      */
     ui.ui_events.check_window_hash_start();
+
+    /**
+     * Check if the user is admin and show some UI elements to them if they are.
+     */
+    ui.check_permissions();
 }
