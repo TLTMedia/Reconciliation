@@ -13,7 +13,7 @@ class Student
     /**
      * Save a students submission and calculate the outcome
      */
-    public function submitStudentAttempt($patientId, $attemptData)
+    public function submitStudentAttempt($patientId, $attemptData, $time)
     {
         /**
          * Get which trial # this is
@@ -88,7 +88,7 @@ class Student
             "response"         => $calculatedResults,
             "correct"          => $isCorrect,
             "submitted_time"   => date('Y-m-d', $submissionTime),
-            "elapsed_time_sec" => 92,
+            "elapsed_time_sec" => $time,
             "submission"       => $attemptData,
             "submit_amt"       => $attemptDataAmt,
             "actual_amt"       => $actualDataAmt,
@@ -217,7 +217,7 @@ class Student
      * If they don't exist, this file will create them.
      * So that, future calls to write and read to the students directory - shouldn't have to check whether the student exists...
      */
-    public function studentFullInit($firstName, $lastName)
+    public function studentFullInit($firstName, $lastName, $admins)
     {
         if (!$this->__createStudentDirectory()) {
             return array(
@@ -237,12 +237,18 @@ class Student
                         "data"   => "failed to created student metadata",
                     );
                 } else {
+                    if (in_array($this->studentEppn, $admins)) {
+                        return array(
+                            "status" => "ok",
+                            "data"   => "admin",
+                        );
+                    }
                     /**
                      * All the directories and files necessary have been successfully created/already exist
                      */
                     return array(
                         "status" => "ok",
-                        "data"   => "student ok",
+                        "data"   => "student",
                     );
                 }
             }

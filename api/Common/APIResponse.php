@@ -46,4 +46,33 @@ class APIResponse
         }
         return json_encode($array);
     }
+
+    /**
+     * Download the supplied csv data as a file
+     */
+    public function csvDownload($fileName, $data)
+    {
+        header('Content-Type: application/csv');
+        header('Content-Disposition: attachment; filename="' . $fileName . '.csv"');
+        header('Pragma: no-cache');
+
+        echo $data;
+    }
+
+    /**
+     * Download the supplied xl data as a file
+     */
+    public function xlDownload($fileName, $data)
+    {
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $fileName . '.xlsx"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+        header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+        header('Pragma: public'); // HTTP/1.0
+
+        echo $data;
+    }
 }
