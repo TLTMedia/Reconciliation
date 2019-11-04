@@ -50,12 +50,23 @@ export class InterfaceEvents {
                 /**
                  * Submit the attempt
                  */
-                status = await this.student_data.submit_attempt();
-                if (attempts == 1) {
+                let response = await this.student_data.submit_attempt();
+                if (attempts == 1 && response.message != "") {
                     /**
                      * Don't show the results if its their first submission
                      */
                     status = "Try again!";
+                } else if (response.message == "") {
+                    /**
+                     * If the server doesn't return a message, it means it was correct.
+                     */
+                    status = "Success!";
+                } else {
+                    /**
+                     * Its their last attempt, show them their results and change color of incorrect rows
+                     */
+                    status = response.message;
+                    this.show_wrong_groups(response.incorrect);
                 }
 
                 /**
@@ -112,6 +123,12 @@ export class InterfaceEvents {
          * Make the cancel button reset the location.hash - but only when viewing patient intros
          */
         this.modal.set_secondary_action_close_modal_reset_hash();
+    }
+
+    show_wrong_groups(groups) {
+        for (let i in groups) {
+            $(".group_" + groups[i]).animate({ "background-color": "rgba(255, 0, 0, 0.4)" }, 1000);
+        }
     }
 
     stop_begin_max_attempts() {

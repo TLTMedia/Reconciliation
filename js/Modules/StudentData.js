@@ -23,9 +23,9 @@ export class StudentData {
     }
 
     async submit_attempt() {
-        let trial_data = this.api.request({
+        let response = this.api.request({
             endpoint: 'submit_attempt',
-            method: "POST",
+            method: 'POST',
             data: {
                 patient: this.state.current_patient,
                 attempt: this.state.current_attempt,
@@ -33,11 +33,6 @@ export class StudentData {
             },
         });
 
-        let response_data = await trial_data;
-        if (response_data == "") {
-            return "Success!";
-        } else {
-            return response_data;
-        }
+        return await response;
     }
 }
