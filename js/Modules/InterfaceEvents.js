@@ -1,10 +1,11 @@
 export class InterfaceEvents {
-    constructor({ state, student_data, patient_data, modal, ui }) {
+    constructor({ state, student_data, patient_data, admin_data, modal, ui }) {
         console.log("InterfaceEvents Module Loaded");
 
         this.state = state;
         this.student_data = student_data;
         this.patient_data = patient_data;
+        this.admin_data = admin_data;
         this.modal = modal;
         this.ui = ui;
     }
@@ -208,6 +209,30 @@ export class InterfaceEvents {
                     amt: med_amt,
                     action: med_action,
                 };
+            }
+        });
+    }
+
+    /**
+     * bind events for the admin controls
+     */
+    bind_admin_events() {
+        /**
+         * TODO: add a new admin
+         */
+        $("#admin-add-admin").off().on("click", () => {
+            alert("Sorry! Not yet implemented.");
+        });
+
+        /**
+         * Reset your own student data
+         */
+        $("#admin-reset-self").off().on("click", async () => {
+            if (confirm("Are you sure you want to reset your own data?")) {
+                await this.admin_data.reset_self();
+
+                // force refresh the page.
+                window.location.reload(true);
             }
         });
     }

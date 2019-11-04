@@ -5,3 +5,4 @@ export { Modal } from './Modal.js'
 export { Toast } from './Toast.js';
 export { PatientData } from './PatientData.js';
 export { StudentData } from './StudentData.js';
+export { AdminData } from './AdminData.js';

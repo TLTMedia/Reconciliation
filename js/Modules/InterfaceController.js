@@ -1,7 +1,7 @@
 import { InterfaceEvents, Modal } from './ModuleLoader.js';
 
 export class InterfaceController {
-    constructor({ state, toast, student_data, patient_data }) {
+    constructor({ state, toast, student_data, patient_data, admin_data }) {
         console.log("InterfaceController Module Loaded");
 
         this.state = state;
@@ -33,6 +33,7 @@ export class InterfaceController {
             state: state,
             student_data: student_data,
             patient_data: patient_data,
+            admin_data: admin_data,
             modal: this.modal,
             ui: this
         });
@@ -205,6 +206,7 @@ export class InterfaceController {
     check_permissions() {
         if (this.state.user_type == "admin") {
             $(".admin").show();
+            this.ui_events.bind_admin_events();
         }
     }
 }

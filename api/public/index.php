@@ -180,7 +180,7 @@ $app->get("/generate_master_doc", function () use ($app, $PATH_STUDENTS, $PATH_E
 /**
  * Reset My Student Data
  */
-$app->get("/reset_my_data", function () use ($app, $PATH_STUDENTS, $authUniqueId, $authAdmins) {
+$app->get("/reset_my_data", function () use ($app, $PATH_STUDENTS, $responseFmt, $authUniqueId, $authAdmins) {
     if (!in_array($authUniqueId, $authAdmins)) {
         echo "invalid permissions";
         exit;
@@ -193,7 +193,12 @@ $app->get("/reset_my_data", function () use ($app, $PATH_STUDENTS, $authUniqueId
         }
     }
 
-    echo "success";
+    echo $responseFmt->arrayToAPIObject(
+        array(
+            "status" => "ok",
+            "data"   => "successfully deleted all of the current account student data",
+        )
+    );
 });
 
 /**

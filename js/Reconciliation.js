@@ -1,7 +1,7 @@
 /**
  * Initialization of Reconciliation scripts begin here
  */
-import { InterfaceController, APIHandler, StudentData, PatientData, Toast } from './Modules/ModuleLoader.js';
+import { InterfaceController, APIHandler, StudentData, PatientData, Toast, AdminData } from './Modules/ModuleLoader.js';
 
 (async () => {
     const state = {};
@@ -21,6 +21,10 @@ import { InterfaceController, APIHandler, StudentData, PatientData, Toast } from
         state: state,
         api: api,
     });
+    const admin_init = new AdminData({
+        state: state,
+        api: api,
+    });
 
     /**
      * These must be await, 
@@ -31,6 +35,7 @@ import { InterfaceController, APIHandler, StudentData, PatientData, Toast } from
      */
     const student_data = await student_init;
     const patient_data = await patient_init;
+    const admin_data = await admin_init;
 
     /**
      * Classes that need awaited objects
@@ -40,6 +45,7 @@ import { InterfaceController, APIHandler, StudentData, PatientData, Toast } from
         toast: toast,
         student_data: student_data,
         patient_data: patient_data,
+        admin_data: admin_data,
     });
 
     /**
