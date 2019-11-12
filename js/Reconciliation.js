@@ -1,9 +1,19 @@
 /**
  * Initialization of Reconciliation scripts begin here
  */
-import { InterfaceController, APIHandler, StudentData, PatientData, Toast, AdminData } from './Modules/ModuleLoader.js';
+import { InterfaceController, APIHandler, StudentData, PatientData, Toast, AdminData, Shibboleth } from './Modules/_ModuleLoader.js';
 
 (async () => {
+    /**
+     * Shibboleth Ping,
+     * It's blocking - nothing else happens until the request resolves.
+     */
+    const shibboleth = new Shibboleth();
+    await shibboleth.ping();
+
+    /**
+     * Our main state for Marginalia.
+     */
     const state = {};
 
     const toast = new Toast();

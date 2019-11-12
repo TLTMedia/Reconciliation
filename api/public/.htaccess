@@ -8,3 +8,8 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [QSA,L]
+
+AuthType shibboleth
+ShibRequestSetting requireSession 1
+require valid-user
+# require affiliation student@stonybrook.edu

@@ -2,7 +2,7 @@ export class APIHandler {
     constructor() {
         console.log("APIHandler Module Loaded");
 
-        this.base_url = location.pathname + 'api/public/';
+        this.base_url = "https://" + window.location.hostname + "/reconciliation/api/public/";
     }
 
     parse_get_data(data) {

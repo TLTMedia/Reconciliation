@@ -1,0 +1,4 @@
+AuthType shibboleth
+ShibRequestSetting requireSession 1
+require valid-user
+# require affiliation student@stonybrook.edu

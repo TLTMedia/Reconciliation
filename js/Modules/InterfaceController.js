@@ -1,4 +1,4 @@
-import { InterfaceEvents, Modal } from './ModuleLoader.js';
+import { InterfaceEvents, Modal } from './_ModuleLoader.js';
 
 export class InterfaceController {
     constructor({ state, toast, student_data, patient_data, admin_data }) {
