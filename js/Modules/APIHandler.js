@@ -39,7 +39,7 @@ export class APIHandler {
                 console.error("ERROR", data);
 
                 let error_data = data.data || data.message;
-                alert("A server error occured. \nPlease contact: 'paul.st.denis@stonybrook.edu' with the subject 'Reconciliation Server Error'\nAnd include this error: " + error_data);
+                alert("A server error occured. \nPlease contact: 'tll@stonybrook.edu' with the subject 'Reconciliation Server Error'\nAnd include this error: " + error_data);
 
                 return;
             } else if (data['status'] !== 'ok') {
@@ -55,9 +55,11 @@ export class APIHandler {
             }
         }).fail((_, __, errorThrown) => {
             alert("An unexpected error occured. Please try again.");
-
+		
             console.log("ERROR", errorThrown);
-        });
+document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+	location.reload(true);
+	});
 
         return defer.promise();
     }

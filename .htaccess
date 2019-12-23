@@ -1,28 +1,12 @@
+# Lazy Session Shibboleth Config on Apache
+AuthType shibboleth
+<IfVersion < 2.3>
+  ShibCompatWith24 On
+</IfVersion>
+ShibRequestSetting requireSession false 
+require shibboleth
+Options +SymLinksIfOwnerMatch 
 RewriteEngine on
-RewriteBase /
+RewriteCond %{REMOTE_USER} ^$ 
+RewriteRule ^(.*)$ /checker/index\.php\?target=%{REQUEST_URI} [NC,QSA]
 
-# Redirects index.htm to secure if HTTPS isn't on.
-RewriteCond %{HTTPS} !=on
-RewriteRule ^(.*)$ https://apps.tlt.stonybrook.edu/reconciliation/shibboleth/index.html [L,R=301,NE] 
-
-# Redirects index.html to secure no matter what...
-# B/c base index is index.html - so a visit to stonybrook.edu/marginalia/ will force shibboleth login.
-# Even if https is already on, we still do shibboleth b/c we might not be logged in...
-# Whereas the above rule is only if https:// isn't on to begin with...
-# The problem with these 2 rules -
-# Edge Case where: https:// is on, and we visit index.htm directly.
-# AND it's a new browser session/no cookies are saved.
-# Basically, we'll be in https://...index.htm but all our API requests will fail - b/c we aren't technically 
-# logged in via Shibboleth. (so, we need to write some javascript to check whether shibboleth requests are logged in)
-# and if they aren't - then force the user to https://shibboleth/index.html to login
-# See: Shibboleth.js for dealing with the edge case.
-
-DirectoryIndex index.html
-Redirect /reconciliation/index.html https://apps.tlt.stonybrook.edu/reconciliation/shibboleth/index.html
-
-# Uncomment to display php errors in the log
-php_flag display_startup_errors on
-php_flag display_errors on
-php_flag html_errors on
-php_flag log_errors on
-php_value error_log PHP_errors.log

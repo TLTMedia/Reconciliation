@@ -1,0 +1,6 @@
+[12-Nov-2019 05:22:38] PHP Notice:  Undefined index: eppn in /home1/tltsecure/apache2/htdocs/reconciliation/api/public/index.php on line 34
+[12-Nov-2019 05:22:38] PHP Notice:  Undefined index: nickname in /home1/tltsecure/apache2/htdocs/reconciliation/api/public/index.php on line 35
+[12-Nov-2019 05:22:38] PHP Notice:  Undefined index: sn in /home1/tltsecure/apache2/htdocs/reconciliation/api/public/index.php on line 36
+[12-Nov-2019 05:22:48] PHP Notice:  Undefined index: eppn in /home1/tltsecure/apache2/htdocs/reconciliation/api/public/index.php on line 34
+[12-Nov-2019 05:22:48] PHP Notice:  Undefined index: nickname in /home1/tltsecure/apache2/htdocs/reconciliation/api/public/index.php on line 35
+[12-Nov-2019 05:22:48] PHP Notice:  Undefined index: sn in /home1/tltsecure/apache2/htdocs/reconciliation/api/public/index.php on line 36

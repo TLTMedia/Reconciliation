@@ -8,7 +8,7 @@ export class PatientData {
 
     async all_patients_data() {
         let all_patients = this.api.request({
-            endpoint: 'all_patients_data',
+            endpoint: 'app_data/patients',
         });
 
         return await all_patients;

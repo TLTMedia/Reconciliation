@@ -1,7 +1,7 @@
 /**
  * Initialization of Reconciliation scripts begin here
  */
-import { InterfaceController, APIHandler, StudentData, PatientData, Toast, AdminData, Shibboleth } from './Modules/_ModuleLoader.js';
+import { InterfaceController, APIHandler, StudentData, PatientData,Intro, Toast, AdminData, Shibboleth } from './Modules/_ModuleLoader.js';
 
 (async () => {
     /**
@@ -31,6 +31,10 @@ import { InterfaceController, APIHandler, StudentData, PatientData, Toast, Admin
         state: state,
         api: api,
     });
+    const intro_init = new Intro({
+        state: state,
+        api: api,
+    });
     const admin_init = new AdminData({
         state: state,
         api: api,
@@ -45,27 +49,29 @@ import { InterfaceController, APIHandler, StudentData, PatientData, Toast, Admin
      */
     const student_data = await student_init;
     const patient_data = await patient_init;
+    const intro_data = await intro_init;
     const admin_data = await admin_init;
 
     /**
      * Classes that need awaited objects
      */
     const ui = new InterfaceController({
-        state: state,
-        toast: toast,
-        student_data: student_data,
-        patient_data: patient_data,
-        admin_data: admin_data,
+        state,
+        toast,
+        student_data,
+        patient_data,
+	intro_data,
+        admin_data,
     });
 
     /**
      * Call the init script
      */
     init({
-        state: state,
-        ui: ui,
-        student_data: student_data,
-        patient_data: patient_data,
+        state,
+        ui,
+        student_data,
+        patient_data
     });
 })();
 

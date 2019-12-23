@@ -2,17 +2,18 @@ export class Modal {
     constructor({ state, ui }) {
         this.state = state;
         this.ui = ui;
-
+        this.modal_content= $(".modal-content")	
         /**
          * TODO: rewrite this;
          * It was copy-pasted form old modal.js
          */
         this.modal = document.getElementById("myModal");
-
+	
+	this.modal_content.draggable(); 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = event => {
             if (event.target == this.modal) {
-                this.modal.style.display = "none";
+                $(this.modal).hide();
                 // TODO: fix
                 // history.pushState(null, null, ' '); // remove the hash, but preserves history so back button works
             }
@@ -20,20 +21,24 @@ export class Modal {
     }
 
     show_modal({ content, button_text = "Close", title = "status", show_cancel = true } = {}) {
+        //this.modal.style.display = "block";
+         $(this.modal).show();
+	this.modal_content.css({left:0,top:0});
+
+	$("#modal-header-title").html(title);
+        $(".modal-body").html(content);
+        $("#modal-main-action").html(button_text);
         if (show_cancel) {
             $("#modal-secondary-action").show();
         } else {
             $("#modal-secondary-action").hide();
         }
 
-        this.modal.style.display = "block";
-        $("#modal-header-title").html(title);
-        $(".modal-body").html(content);
-        $("#modal-main-action").html(button_text);
     }
 
+
     close_modal() {
-        this.modal.style.display = "none";
+        $(this.modal).hide();
     }
 
     set_main_action_close_modal() {

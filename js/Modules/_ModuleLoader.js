@@ -4,6 +4,7 @@ export { APIHandler } from './APIHandler.js';
 export { Modal } from './Modal.js'
 export { Toast } from './Toast.js';
 export { PatientData } from './PatientData.js';
+export { Intro } from './Intro.js';
 export { StudentData } from './StudentData.js';
 export { AdminData } from './AdminData.js';
 export { Shibboleth } from './Shibboleth.js';

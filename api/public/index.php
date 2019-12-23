@@ -112,12 +112,23 @@ $app->get("/submitted_trials_data", function () use ($app, $PATH_STUDENTS, $resp
 
 /**
  * TODO: Temporary~ endpoint to serve the patient data from this router
- * Get all patient data
+ * Get google spreadsheet data, $type is "main_intro" or "patients"
  */
+$app->get("/app_data/:type", function ($type) use ($app) {
+    $app->log->info("Using depreciated endpoint /all_patients_data");
+    $data= json_encode(json_decode(file_get_contents("../../json/data.json"))->{$type});
+    echo <<<EOL
+        {"status":"ok", "data":$data}
+EOL;
+});
+
+
 $app->get("/all_patients_data", function () use ($app) {
     $app->log->info("Using depreciated endpoint /all_patients_data");
-
-    echo "{\"status\":\"ok\", \"data\": " . file_get_contents("../../json/data.json") . "}";
+    $data= json_encode(json_decode(file_get_contents("../../json/data.json"))->patients);
+    echo <<<EOL
+	{"status":"ok", "data":$data}
+EOL;
 });
 
 /**

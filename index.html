@@ -1,14 +1,121 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Reconciliation - Redirect</title>
+    <meta charset="utf-8">
+    <title>Reconciliation</title>
+    <meta name="description" content="Welcome to Reconciliation" />
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+
+    <!-- Other libraries used-->
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+
+    <!-- Other styling used -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
+
+    <!-- Reconciliation main script entry -->
+    <script defer type="module" src="./js/Reconciliation.js" crossorigin="use-credentials"></script>
+
+    <!-- Reconciliation main styling -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/modal.css" />
 </head>
 
 <body>
-    <!-- this page is technically unviewable because of our .htaccess rules. -->
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <a class="navbar-brand" href="">Reconciliation</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Patients</a>
+                    <div id="patientList" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <!-- <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a> -->
+                    </div>
+                </li>
+                <li class="nav-item dropdown admin">
+                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                    <div id="patientList" class="dropdown-menu" aria-labelledby="adminDropdownMenuLink">
+                        <a class="dropdown-item"
+                            href="https://apps.tlt.stonybrook.edu/reconciliation/api/public/generate_master_doc?download=true">Download
+                            Master Data</a>
+                        <hr />
+                        <a class="dropdown-item"
+                            href="https://apps.tlt.stonybrook.edu/reconciliation/api/public/all_patient_report_xl?patient=0">Download
+                            Patient Data #0</a>
+                        <a class="dropdown-item"
+                            href="https://apps.tlt.stonybrook.edu/reconciliation/api/public/all_patient_report_xl?patient=1">Download
+                            Patient Data #1</a>
+                        <a class="dropdown-item"
+                            href="https://apps.tlt.stonybrook.edu/reconciliation/api/public/all_patient_report_xl?patient=2">Download
+                            Patient Data #2</a>
+                        <a class="dropdown-item"
+                            href="https://apps.tlt.stonybrook.edu/reconciliation/api/public/all_patient_report_xl?patient=3">Download
+                            Patient Data #3</a>
+                        <a class="dropdown-item"
+                            href="https://apps.tlt.stonybrook.edu/reconciliation/api/public/all_patient_report_xl?patient=4">Download
+                            Patient Data #4</a>
+                        <hr />
+                        <a id="admin-reset-self" class="dropdown-item red-font" href="#">Reset My Student Data</a>
+                        <hr />
+                        <a class="dropdown-item red-font"
+                            href="https://apps.tlt.stonybrook.edu/reconciliation/api/public/reset_all_student_data">
+                            Reset All Student Data</a>
+                        <a class="dropdown-item red-font"
+                            href="https://apps.tlt.stonybrook.edu/reconciliation/api/public/reset_all_patient_data">
+                            Reset All Patient Data</a>
+                        <hr />
+                        <a id="admin-add-admin" class="dropdown-item" href="#">Add Admin</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="patient-intro">
+        <div class="patient-intro-header">Patient Synopsis</div>
+        <div class="patient-intro-body"></div>
+        <div class="patient-intro-footer"></div>
+    </div>
 
-    <a href="shibboleth/index.html">Click here if you aren't redirected</a>
+    <div id="medGrid" class="container"></div>
+
+    <!-- <div id="status"></div> -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-header-title">Status</h3>
+                <!-- <span class="close modal-close-action modal-reset-hash">&times;</span> -->
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <span>Attempts: #<span id="attempt-current">0</span>/<span id="attempt-maximum">2</span></span>
+                <button id="modal-secondary-action" class="btn btn-secondary">Cancel</button>
+                <button id="modal-main-action" class="btn btn-primary"></button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
