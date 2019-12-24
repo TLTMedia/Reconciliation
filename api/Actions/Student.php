@@ -172,7 +172,7 @@ class Student
             return "Unable to get actual patient results";
         }
 
-        $data                     = json_decode($data);
+        $data                     = json_decode($data)->patients;
         $actualResults            = array();
         $patientSolutionResponses = $data[$patientId]->responses;
         for ($i = 1; $i < count($patientSolutionResponses); $i++) {
@@ -214,7 +214,8 @@ class Student
          * Compare the responses to the actual patient solution responses
          */
         $responsePerGroup         = array();
-        $data                     = json_decode($data);
+        
+	$data                     = json_decode($data)->patients;
         $patientSolutionResponses = $data[$patientId]->responses;
         for ($i = 1; $i < count($patientSolutionResponses); $i++) {
             if ($groupResults[$i] == $patientSolutionResponses[$i][1]) {

@@ -34,7 +34,7 @@ export class APIHandler {
             cache: false,
             contentType: false,
             processData: false
-        }).done(data => {
+        }).done(data => { console.log(data)
             if (data['status'] == 'error') {
                 console.error("ERROR", data);
 
@@ -58,7 +58,7 @@ export class APIHandler {
 		
             console.log("ERROR", errorThrown);
 document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
-	location.reload(true);
+	//location.reload(true);
 	});
 
         return defer.promise();
