@@ -71,14 +71,15 @@ import { InterfaceController, APIHandler, StudentData, PatientData,Intro, Toast,
         state,
         ui,
         student_data,
-        patient_data
+        patient_data,
+	intro_data
     });
 })();
 
 /**
  * Init script
  */
-async function init({ state: state, ui: ui, student_data: student_data, patient_data: patient_data }) {
+async function init({ state, ui, student_data, patient_data,intro_data }) {
     /**
      * Initialize the backend user if necessary
      */
@@ -92,14 +93,16 @@ async function init({ state: state, ui: ui, student_data: student_data, patient_
 
     /**
      * Get the patient data
-     */
+    */
     let patients_data = await patient_data.all_patients_data();
     state.patients = patients_data;
 
     /**
      * Show welcome text
      */
-    ui.show_welcome_message();
+     let intro_data_text = await intro_data.main_intro_data();
+     state.intro= intro_data_text[0].replace("\n","<br/>");
+     ui.show_welcome_message();
 
     /**
      * Set global event listeners 

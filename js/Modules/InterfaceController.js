@@ -3,13 +3,13 @@ import { InterfaceEvents, Modal } from './_ModuleLoader.js';
 export class InterfaceController {
     constructor({ state, toast, student_data,intro_data ,patient_data, admin_data }) {
         console.log("InterfaceController Module Loaded");
-	//assign all arguments to this
+	//assign all arguments to 'this'
 	Object.keys(arguments[0]).map(arg=>this[arg]=arguments[0][arg])
 	//this.state = state;
         //this.toast = toast;
         //this.student_data = student_data;
         //this.patient_data = patient_data;
-	this.welcome_text=`Welcome to the medication reconcillation simulation. Each of these exercises will present you with a clinical vignette and provide you with direction to make changes to medication orders.\nYou will get two tries, and your responses will be locked in afterwards.\nThe purpose is to create a EHR agnostic experience that will hopefully help you learn how to make sure you order medications correctly when you start your internship. Good luck!` //intro_data.replace("\n","<br>")
+//	this.welcome_text=`Welcome to the medication reconcillation simulation. Each of these exercises will present you with a clinical vignette and provide you with direction to make changes to medication orders.\nYou will get two tries, and your responses will be locked in afterwards.\nThe purpose is to create a EHR agnostic experience that will hopefully help you learn how to make sure you order medications correctly when you start your internship. Good luck!` //intro_data.replace("\n","<br>")
 
         /**
          * String constants
@@ -199,7 +199,7 @@ export class InterfaceController {
     show_welcome_message() {
         $(this.id_constants["med_grid"]).html(`
                 <br />
-                <p>${this.welcome_text}</p>
+                <p>${this.state.intro}</p>
         `);
     }
 
