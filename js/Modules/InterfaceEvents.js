@@ -96,9 +96,15 @@ export class InterfaceEvents {
         /**
          * Show patient introduction modal & reset the styling
          */
+
+  var underscoreName = this.state.patients[patient_id].info.Name.replace(" ","_");
+  var patient_image = `Images/${underscoreName}_Base.png`
+
+
         this.modal.reset_attempt_styling();
         this.modal.show_modal({
             content: this.state['patients'][patient_id].info.Intro,
+            image:patient_image,
             button_text: "Begin",
             title: "Patient Introduction",
         });
@@ -143,7 +149,7 @@ export class InterfaceEvents {
 
     bind_window_hash_change() {
         /**
-         * When no hash is present and the back button is pressed; fully refresh the page.	
+         * When no hash is present and the back button is pressed; fully refresh the page.
          */
         window.onhashchange = () => {
             if (!location.hash) {

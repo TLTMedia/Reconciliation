@@ -24,6 +24,9 @@
 /* Modal Content */
 
 .modal-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     position: relative;
     background-color: #fefefe;
     margin: auto;
@@ -75,16 +78,25 @@
     cursor: pointer;
 }
 
+.modal-image {
+    width: 20%;
+    float: left;
+    height: 15rem;
+    width: 11.5rem;
+}
 .modal-header {
+    width:100%;
     padding: 10px 10px 10px 10px;
 }
 
 .modal-body {
+    width: 60%;
     padding: 6px 16px 6px 16px;
     position: relative;
 }
 
 .modal-footer {
+  width: 100%;
     padding: 10px 10px 10px 10px;
 }
 

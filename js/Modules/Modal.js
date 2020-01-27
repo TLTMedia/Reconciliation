@@ -2,14 +2,14 @@ export class Modal {
     constructor({ state, ui }) {
         this.state = state;
         this.ui = ui;
-        this.modal_content= $(".modal-content")	
+        this.modal_content= $(".modal-content")
         /**
          * TODO: rewrite this;
          * It was copy-pasted form old modal.js
          */
         this.modal = document.getElementById("myModal");
-	
-	this.modal_content.draggable(); 
+
+	this.modal_content.draggable();
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = event => {
             if (event.target == this.modal) {
@@ -20,11 +20,12 @@ export class Modal {
         }
     }
 
-    show_modal({ content, button_text = "Close", title = "status", show_cancel = true } = {}) {
+    show_modal({ content,image="Images/NotFound.png", button_text = "Close", title = "status", show_cancel = true } = {}) {
         //this.modal.style.display = "block";
          $(this.modal).show();
 	this.modal_content.css({left:0,top:0});
 
+$(".modal-image").attr("src",image)
 	$("#modal-header-title").html(title);
         $(".modal-body").html(content);
         $("#modal-main-action").html(button_text);

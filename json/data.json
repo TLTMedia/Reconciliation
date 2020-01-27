@@ -4,7 +4,7 @@
             "info": {
                 "Synopsis": "Carol Merrimen is a 60-year-old non-smoking woman with diabetes, HTN, dyslipidemia, and congestive heart failure. She was admitted to the hospital after after becoming increasingly short of breath. She was treated for an exacerbation of heart failure with additional diuretics (water pill). An ECHO was performed which showed an EF of 45% which is unchanged from your baseline. It was determined that the exacerbation was related to dietary non-compliance with salt and fluids. During her hospital stay she were switched from her home NPH to Insulin Glargine (Lantus) based on hospital formulary. Her water pill (Lasix) was increased from 20 mg to 40 mg daily.",
                 "Intro": "Carol Merrimen, is a 60-year-old non-smoking woman with diabetes, HTN, dyslipidemia and Congestive heart failure. You are a real estate agent and have no medical insurance. Despite financial constraints, you have been very adherent to your medications, making every effort to get them all and paying for them out of pocket. You keep your follow-up appointments and your chronic diseases are usually well controlled. You get NPH insulin for free through a patient assistance program, and you get the rest of your meds from a local pharmacy\u2019s $4 generic plan.",
-                "Name": "Martha Smith"
+                "Name": "Carol Merrimen"
             },
             "medications": [
                 {
@@ -187,8 +187,8 @@
                 [
                     "4",
                     "5",
-                    "The patient was prescribed too small of a dose of insulin and developed symptomatic hypoglycemia. She returns to the emergency department.",
-                    "The patient was given too much insulin and became hyperglycemic. The patient developed increased urinary frequency and abdominal pain, and she returned to the emergency department with severe hyperglycemia."
+                    "The patient was prescribed too small of a dose of insulin and developed symptomatic hyperglycemia. The patient developed increased urinary frequency and abdominal pain, and she returned to the emergency department with severe hyperglycemia.",
+                    "The patient was given too much insulin and became hypoglycemic. She returns to the emergency department."
                 ],
                 [
                     "5",
@@ -440,7 +440,7 @@
         {
             "info": {
                 "Synopsis": "On presentation, patient was found to have BP 92/63, BUN 84 (baseline 43) and elevated Cr 3.4 (baseline 2.1). He was given IV fluids and admitted for further management. With hydration and home medication readjustment, his mental status improved. During the admission, his renal function improved, but not back to baseline. He had resultant reduced renal function with worsened CKD. His gabapentin dose is reduced to account for the worsening renal function. The home pravastatin is non-formulary, so he had been put on simvastatin only while inpatient. ",
-                "Intro": "70yo M with a history of CKD stage III from HTN, severe spinal stenosis with neuropathy, and HLD presenting with altered mental status. On a hot midsummer day, patient was working outside in his garden. Over the course of the day, he developed worsening nausea, weakness, and ultimately altered mental status. Of notes, he was recently prescribed a trial of methocarbamol for back spasms. His wife admitted to decreased po intake on the day of presentation.",
+                "Intro": "John Donovan is a 70yo M with a history of CKD stage III from HTN, severe spinal stenosis with neuropathy, and HLD presenting with altered mental status. On a hot midsummer day, patient was working outside in his garden. Over the course of the day, he developed worsening nausea, weakness, and ultimately altered mental status. Of notes, he was recently prescribed a trial of methocarbamol for back spasms. His wife admitted to decreased po intake on the day of presentation.",
                 "Name": "John Donovan"
             },
             "medications": [
@@ -573,7 +573,7 @@
                     "3",
                     "40",
                     "His cholesterol medication was underdosed, and he returns with chest pain. He requires that his home regimen of atorvastatin be continued. ",
-                    "His cholesterol medication was underdosed, and he returns with chest pain. He requires that his home regimen of atorvastatin be continued. "
+                    "His cholesterol medication was overdosed, and he returns with new thigh pain. He requires that his home regimen of atorvastatin be reduced. "
                 ],
                 [
                     "4",
@@ -587,7 +587,7 @@
             "info": {
                 "Synopsis": "Lord Grantham's neuro exam has stabilized and started to improve after 2 days in the hospital with initiation of intensive physical and occupational therapy. He is to be discharged back to Downton Abbey to recover at home as he will be able to receive adequate care from Mr. Carson, his butler. In the hospital he is started on Eliquis 5mg BID for anticoagulation after PARQ conference with his family and his personal physician Dr. Clarkson. He also started metoprolol and uptitrated to 50mg BID for rate control. HIs existing atoravastin was increased to 80mg daily, and lisnopril was uptitrated to 20mg daily.",
                 "Intro": "Lord Grantham is a 67 year old male, who is admitted to the hospital after he was unable to speak and move his right leg upon waking. He had history signficant for hypertension and hyperlipidemia. During the hospital course he was found to have a left sided MCA stroke. He also has persistent atrial fibrillation with RVR, with a CHA\u2082DS\u2082-VASc score of 4. In addition his blood pressure remained persistently elevated, only to be controlled 2 days later after his lisinopril dose was increased. His existing atorvastatin dose was also increased due to the stroke event.",
-                "Name": "Robert Crawley"
+                "Name": "Lord Grantham"
             },
             "medications": [
                 {
