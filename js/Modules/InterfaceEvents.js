@@ -13,6 +13,7 @@ export class InterfaceEvents {
     async submit_patient_evaluation() {
         const groupSet = new Set();
         let status = "";
+        let force_home = false;
 
         let i;
         let medication;
@@ -61,6 +62,7 @@ export class InterfaceEvents {
                      * If the server doesn't return a message, it means it was correct.
                      */
                     status = "Success!";
+                    force_home = true;
                 } else {
                     /**
                      * Its their last attempt, show them their results and change color of incorrect rows
@@ -84,7 +86,11 @@ export class InterfaceEvents {
             show_cancel: false,
         });
 
-        this.modal.set_main_action_close_modal();
+        if (force_home) {
+            this.modal.set_main_action_go_home();
+        } else {
+            this.modal.set_main_action_close_modal();
+        }
     }
 
     load_patient_intro(event) {
@@ -96,15 +102,13 @@ export class InterfaceEvents {
         /**
          * Show patient introduction modal & reset the styling
          */
-
-  var underscoreName = this.state.patients[patient_id].info.Name.replace(" ","_");
-  var patient_image = `Images/${underscoreName}_Base.png`
-
+        var underscoreName = this.state.patients[patient_id].info.Name.replace(" ", "_");
+        var patient_image = `Images/${underscoreName}_Base.png`;
 
         this.modal.reset_attempt_styling();
         this.modal.show_modal({
             content: this.state['patients'][patient_id].info.Intro,
-            image:patient_image,
+            image: patient_image,
             button_text: "Begin",
             title: "Patient Introduction",
         });

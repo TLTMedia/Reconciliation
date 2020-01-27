@@ -22,6 +22,14 @@ export class StudentData {
         return await trials_data;
     }
 
+    async student_report_data() {
+        let student_data = this.api.request({
+            endpoint: 'student_report',
+        });
+
+        return await student_data;
+    }
+
     async submit_attempt() {
         let response = this.api.request({
             endpoint: 'submit_attempt',

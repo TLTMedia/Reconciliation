@@ -1,14 +1,11 @@
 import { InterfaceEvents, Modal } from './_ModuleLoader.js';
 
 export class InterfaceController {
-    constructor({ state, toast, student_data,intro_data ,patient_data, admin_data }) {
+    constructor({ state, toast, student_data, intro_data, patient_data, admin_data }) {
         console.log("InterfaceController Module Loaded");
-	//assign all arguments to 'this'
-	Object.keys(arguments[0]).map(arg=>this[arg]=arguments[0][arg])
-	//this.state = state;
-        //this.toast = toast;
-        //this.student_data = student_data;
-        //this.patient_data = patient_data;
+
+        // Assign all arguments to 'this'
+        Object.keys(arguments[0]).map(arg => this[arg] = arguments[0][arg]);
 
         /**
          * String constants
@@ -187,7 +184,45 @@ export class InterfaceController {
                 class: "dropdown-item",
                 html: this.state.patients[patient].info.Name
             }).on("click", event => {
-                this.ui_events.load_patient_intro(event);
+                let selected_patient_id = event.target.id.split("_")[1];
+                let submissions = this.state.submitted["patient_" + selected_patient_id];
+
+                if (parseInt(submissions) == 2) {
+                    event.stopPropagation();
+
+                    let tmp = false;
+                    this.state.student_report.forEach(submission => {
+                        if (parseInt(submission.patient_id) == parseInt(selected_patient_id)) {
+                            if (submission.correct) {
+                                this.toast.create_toast("You already submitted the correct response for this patient.", "Success");
+                                tmp = true;
+                                return;
+                            }
+                        }
+                    });
+
+                    if (!tmp) {
+                        this.toast.create_toast("You already used all your attempts!", "Warning");
+                    }
+                } else if (parseInt(submissions) == 1) {
+                    let tmp = false;
+                    this.state.student_report.forEach(submission => {
+                        if (parseInt(submission.patient_id) == parseInt(selected_patient_id)) {
+                            if (submission.correct) {
+                                event.stopPropagation();
+                                this.toast.create_toast("You already submitted the correct response for this patient.", "Success");
+                                tmp = true;
+                                return;
+                            }
+                        }
+                    });
+
+                    if (!tmp) {
+                        this.ui_events.load_patient_intro(event);
+                    }
+                } else {
+                    this.ui_events.load_patient_intro(event);
+                }
             }));
         }
     }
@@ -197,8 +232,8 @@ export class InterfaceController {
      */
     show_welcome_message() {
         $(this.id_constants["med_grid"]).html(`
-                <br />
-                <p>${this.state.intro}</p>
+            <br />
+            <p>${this.state.intro}</p>
         `);
     }
 

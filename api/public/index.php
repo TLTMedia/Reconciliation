@@ -111,21 +111,32 @@ $app->get("/submitted_trials_data", function () use ($app, $PATH_STUDENTS, $resp
 });
 
 /**
+ * Get the trial numbers for each patient this student submitted answers for
+ */
+$app->get("/student_report", function () use ($app, $PATH_STUDENTS, $responseFmt, $authUniqueId) {
+    require "../Actions/Trial.php";
+    $trial = new Trial($app->log, $PATH_STUDENTS, $authUniqueId);
+
+    echo $responseFmt->arrayToAPIObject(
+        $trial->getFullStudentReport()
+    );
+});
+
+/**
  * TODO: Temporary~ endpoint to serve the patient data from this router
  * Get google spreadsheet data, $type is "main_intro" or "patients"
  */
 $app->get("/app_data/:type", function ($type) use ($app) {
     $app->log->info("Using depreciated endpoint /all_patients_data");
-    $data= json_encode(json_decode(file_get_contents("../../json/data.json"))->{$type});
+    $data = json_encode(json_decode(file_get_contents("../../json/data.json"))->{$type});
     echo <<<EOL
         {"status":"ok", "data":$data}
 EOL;
 });
 
-
 $app->get("/all_patients_data", function () use ($app) {
     $app->log->info("Using depreciated endpoint /all_patients_data");
-    $data= json_encode(json_decode(file_get_contents("../../json/data.json"))->patients);
+    $data = json_encode(json_decode(file_get_contents("../../json/data.json"))->patients);
     echo <<<EOL
 	{"status":"ok", "data":$data}
 EOL;

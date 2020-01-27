@@ -107,6 +107,13 @@ async function init({
   state.submitted = submitted_trials;
 
   /**
+   * Get student submitted trials
+   * (this is being used to garner which they've already successfully submitted so they don't need to do a second attempt)
+   */
+  let student_report = await student_data.student_report_data();
+  state.student_report = student_report;
+
+  /**
    * Get the patient data
    */
   let patients_data = await patient_data.all_patients_data();
