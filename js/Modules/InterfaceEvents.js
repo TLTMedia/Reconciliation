@@ -314,11 +314,12 @@ export class InterfaceEvents {
         $("#view-data-charts").off().on("click", () => {
             console.log("etc");
             this.modal.show_modal({
-                content: "charts go here <h3>asd</h3>",
+                content: "charts go here <h3>test</h3>",
                 show_image: false,
                 button_text: "Done",
                 title: "Data View",
                 show_cancel: false,
+                show_attempts: false,
             });
         });
     }
