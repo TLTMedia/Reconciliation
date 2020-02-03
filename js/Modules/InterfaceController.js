@@ -241,6 +241,7 @@ export class InterfaceController {
         if (this.state.user_type == "admin") {
             $(".admin").show();
             this.ui_events.bind_admin_events();
+            this.ui_events.bind_charts_events();
         }
     }
 }

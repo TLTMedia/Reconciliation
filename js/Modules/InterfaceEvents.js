@@ -29,6 +29,12 @@ export class InterfaceEvents {
         this.state['patients'][this.state.current_patient].groupCount = groupSet.size;
 
         /**
+         * Show patient introduction modal & reset the styling
+         */
+        let underscore_name = this.state.patients[this.state.current_patient].info.Name.replace(" ", "_");
+        let condition = "Worse";
+
+        /**
          * No missing data; so calculate the score
          */
         if (status == "") {
@@ -62,6 +68,7 @@ export class InterfaceEvents {
                      * If the server doesn't return a message, it means it was correct.
                      */
                     status = "Success!";
+                    condition = "Better";
                     force_home = true;
                 } else {
                     /**
@@ -79,8 +86,10 @@ export class InterfaceEvents {
             }
         }
 
+        let patient_image = `images/${underscore_name}_${condition}.png`;
         this.modal.show_modal({
             content: status,
+            image: patient_image,
             button_text: "Accept",
             title: "Results",
             show_cancel: false,
@@ -100,10 +109,34 @@ export class InterfaceEvents {
         let patient_id = event.target.id.split("_")[1];
 
         /**
+         * Get number attempts submitted already
+         * &
+         * Get the patient condition ("Base", "Worse", "Better") based on amountt of attempts
+         */
+        let attempts;
+        let condition = "Base";
+        if (this.state.submitted.hasOwnProperty("patient_" + patient_id)) {
+            attempts = parseInt(this.state.submitted["patient_" + patient_id]);
+            if (attempts == 1) {
+                /**
+                 * NOTE:
+                 * If here, the user already submitted once,
+                 * currently we only show the image of the person again if they submitted incorrectly.
+                 * No image is shown if two incorrect attempts or if first attempt was successful.
+                 * Hence why I can just do this and be done with it.
+                 * Must add additional conditions if we end up showing the pictures of the people even after 
+                 * submitting successfully the first time, 
+                 * and if showing pic of person after having failed (submitting incorrectly twice)
+                 */
+                condition = "Worse";
+            }
+        }
+
+        /**
          * Show patient introduction modal & reset the styling
          */
-        var underscoreName = this.state.patients[patient_id].info.Name.replace(" ", "_");
-        var patient_image = `Images/${underscoreName}_Base.png`;
+        let underscore_name = this.state.patients[patient_id].info.Name.replace(" ", "_");
+        let patient_image = `images/${underscore_name}_${condition}.png`;
 
         this.modal.reset_attempt_styling();
         this.modal.show_modal({
@@ -113,9 +146,10 @@ export class InterfaceEvents {
             title: "Patient Introduction",
         });
 
-        let attempts;
+        /**
+         * Inject the attempts submitted into the modal
+         */
         if (this.state.submitted.hasOwnProperty("patient_" + patient_id)) {
-            attempts = parseInt(this.state.submitted["patient_" + patient_id]);
             this.modal.set_current_attempt(attempts);
         } else {
             this.modal.set_current_attempt("0");
@@ -267,6 +301,25 @@ export class InterfaceEvents {
                 // force refresh the page.
                 window.location.reload(true);
             }
+        });
+    }
+
+    /**
+     * bind events for the charts controls
+     */
+    bind_charts_events() {
+        /**
+         * Show charts page
+         */
+        $("#view-data-charts").off().on("click", () => {
+            console.log("etc");
+            this.modal.show_modal({
+                content: "charts go here <h3>asd</h3>",
+                show_image: false,
+                button_text: "Done",
+                title: "Data View",
+                show_cancel: false,
+            });
         });
     }
 }

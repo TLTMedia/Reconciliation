@@ -20,8 +20,9 @@ export class Modal {
         }
     }
 
-    show_modal({ content, image = "Images/NotFound.png", button_text = "Close", title = "status", show_cancel = true } = {}) {
-        //this.modal.style.display = "block";
+    show_modal({ content, image = "images/NotFound.png", button_text = "Close", title = "status", show_cancel = true, show_image = true } = {}) {
+        // this.modal.style.display = "block";
+
         $(this.modal).show();
         this.modal_content.css({ left: 0, top: 0 });
 
@@ -35,6 +36,9 @@ export class Modal {
             $("#modal-secondary-action").hide();
         }
 
+        if (!show_image) {
+            $(".modal-image").hide();
+        }
     }
 
     close_modal() {

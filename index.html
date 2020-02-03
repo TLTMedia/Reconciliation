@@ -57,6 +57,8 @@
                     <a class="nav-link dropdown-toggle" href="#" id="adminDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
                     <div id="patientList" class="dropdown-menu" aria-labelledby="adminDropdownMenuLink">
+                        <a id="view-data-charts" class="dropdown-item green-font" href="#">View Data Charts</a>
+                        <hr />
                         <a class="dropdown-item"
                             href="https://apps.tlt.stonybrook.edu/reconciliation/api/public/generate_master_doc?download=true">Download
                             Master Data</a>
@@ -111,7 +113,8 @@
             <img class="modal-image"></img>
             <div class="modal-body"></div>
             <div class="modal-footer">
-                <span>Attempts: #<span id="attempt-current">0</span>/<span id="attempt-maximum">2</span></span>
+                <span>Attempts: <span id="attempt-current">0</span>
+                    <!--/<span id="attempt-maximum">2</span>--></span>
                 <button id="modal-secondary-action" class="btn btn-secondary">Cancel</button>
                 <button id="modal-main-action" class="btn btn-primary"></button>
             </div>

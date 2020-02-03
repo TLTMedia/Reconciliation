@@ -19,6 +19,10 @@ body {
     color: red;
 }
 
+.green-font {
+    color: green;
+}
+
 .admin {
     display: none;
 }
