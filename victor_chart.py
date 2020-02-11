@@ -1,23 +1,23 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from io import StringIO
+import requests
+
+r = requests.get(url = "https://apps.tlt.stonybrook.edu/reconciliation/api/public2/generate_master_doc", params = {"download": "true"} ) 
+master_data = r.text
 
 # class accuracy
-df = pd.read_csv(r'master.csv')
+df = pd.read_csv(StringIO(master_data))
 df = df.groupby(by=['patient', 'student'])['trial correct'].agg(Sum = 'sum')
-print(df)
 a = df[df['Sum'] > 0.0]
 aa = a.shape[0]
-print("non zeroes?", aa)
 b= df[df['Sum'] == 0.0]
 bb = b.shape[0]
-print("zeroes?", bb)
 c = aa/(aa+bb) * 100
-print('class accuracy: {:0.2f}%'.format(c))
-
-print('\n')
+print('class accuracy: {:0.2f}%\n'.format(c))
 
 #accuracy by patient scenario, aka Scenario Performance by Class
-df = pd.read_csv(r'master.csv')
+df = pd.read_csv(StringIO(master_data))
 all_pts = set(df['patient'])
 print('scenario performance')
 scenario_xcoord = list(range(1,len(all_pts)+1))
@@ -35,7 +35,6 @@ for pt in all_pts:
     scenario_ticks.append(pt)
     print('patient {}: {:0.2f}%'.format(pt,c))
 
-
 print('\n')
 
 plt.bar(scenario_xcoord, scenario_y, tick_label = scenario_ticks, 
@@ -47,10 +46,8 @@ plt.show()
 
 print('\n')
 
-exit(-1);
-
 #accuracy by medication group within each scenario
-df = pd.read_csv(r'master.csv')
+df = pd.read_csv(StringIO(master_data))
 all_pts = set(df['patient'])
 print('performance by medication group within each scenario')
 group_y = []
@@ -84,7 +81,7 @@ for pt in all_pts:
 print('\n')
 
 #accuracy by student
-df = pd.read_csv(r'master.csv')
+df = pd.read_csv(StringIO(master_data))
 all_stdns = set(df['student'])
 print("student's overall performance")
 for stdn in all_stdns:

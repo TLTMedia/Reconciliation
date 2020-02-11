@@ -7,4 +7,6 @@ export { PatientData } from './PatientData.js';
 export { Intro } from './Intro.js';
 export { StudentData } from './StudentData.js';
 export { AdminData } from './AdminData.js';
+export { ChartsData } from './ChartsData.js';
+export { Charts } from './Charts.js';
 export { Shibboleth } from './Shibboleth.js';

@@ -1,11 +1,12 @@
 export class InterfaceEvents {
-    constructor({ state, student_data, patient_data, admin_data, modal, ui }) {
+    constructor({ state, student_data, patient_data, admin_data, charts, modal, ui }) {
         console.log("InterfaceEvents Module Loaded");
 
         this.state = state;
         this.student_data = student_data;
         this.patient_data = patient_data;
         this.admin_data = admin_data;
+        this.charts = charts;
         this.modal = modal;
         this.ui = ui;
     }
@@ -311,16 +312,20 @@ export class InterfaceEvents {
         /**
          * Show charts page
          */
-        $("#view-data-charts").off().on("click", () => {
-            console.log("etc");
-            this.modal.show_modal({
-                content: "charts go here <h3>test</h3>",
-                show_image: false,
-                button_text: "Done",
-                title: "Data View",
-                show_cancel: false,
-                show_attempts: false,
-            });
+        $("#view-data-charts").off().on("click", async () => {
+            window.location.href = "https://mathmethods.thomasgraf.net/user/ilan.kleiman/notebooks/reconciliation%20script.ipynb";
+            // this.modal.show_modal({
+            //     content: "charts go here <h3>test</h3>",
+            //     show_image: false,
+            //     button_text: "Done",
+            //     title: "Data View",
+            //     show_cancel: false,
+            //     show_attempts: false,
+            // });
+            // this.modal.set_main_action_close_modal();
+
+            // // show the class accuracy chart by default
+            // await this.charts.render_charts();
         });
     }
 }

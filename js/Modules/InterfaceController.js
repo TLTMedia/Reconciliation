@@ -1,7 +1,7 @@
-import { InterfaceEvents, Modal } from './_ModuleLoader.js';
+import { InterfaceEvents, Modal, Charts } from './_ModuleLoader.js';
 
 export class InterfaceController {
-    constructor({ state, toast, student_data, intro_data, patient_data, admin_data }) {
+    constructor({ state, toast, student_data, intro_data, patient_data, admin_data, charts_data }) {
         console.log("InterfaceController Module Loaded");
 
         // Assign all arguments to 'this'
@@ -21,7 +21,16 @@ export class InterfaceController {
         this.modal = new Modal({
             state: state,
             toast: toast,
-            ui: this
+            ui: this,
+        });
+
+        /**
+         * Create Charts
+         */
+        this.charts = new Charts({
+            state,
+            charts_data,
+            modal: this.modal,
         });
 
         /**
@@ -32,8 +41,9 @@ export class InterfaceController {
             student_data,
             patient_data,
             admin_data,
+            charts: this.charts,
             modal: this.modal,
-            ui: this
+            ui: this,
         });
     }
 

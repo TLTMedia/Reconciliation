@@ -34,7 +34,8 @@ export class APIHandler {
             cache: false,
             contentType: false,
             processData: false
-        }).done(data => { console.log(data)
+        }).done(data => {
+            // console.log(data)
             if (data['status'] == 'error') {
                 console.error("ERROR", data);
 
@@ -55,11 +56,11 @@ export class APIHandler {
             }
         }).fail((_, __, errorThrown) => {
             alert("An unexpected error occured. Please try again.");
-		
+
             console.log("ERROR", errorThrown);
-document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
-	//location.reload(true);
-	});
+            document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+            // location.reload(true);
+        });
 
         return defer.promise();
     }

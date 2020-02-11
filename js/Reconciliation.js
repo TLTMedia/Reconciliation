@@ -9,7 +9,8 @@ import {
   Intro,
   Toast,
   AdminData,
-  Shibboleth
+  Shibboleth,
+  ChartsData,
 } from './Modules/_ModuleLoader.js';
 
 (async () => {
@@ -48,6 +49,10 @@ import {
     state: state,
     api: api,
   });
+  const charts_init = new ChartsData({
+    state: state,
+    api: api,
+  })
 
   /**
    * These must be await,
@@ -60,6 +65,7 @@ import {
   const patient_data = await patient_init;
   const intro_data = await intro_init;
   const admin_data = await admin_init;
+  const charts_data = await charts_init;
 
   /**
    * Classes that need awaited objects
@@ -71,6 +77,7 @@ import {
     patient_data,
     intro_data,
     admin_data,
+    charts_data,
   });
 
   /**
@@ -81,7 +88,7 @@ import {
     ui,
     student_data,
     patient_data,
-    intro_data
+    intro_data,
   });
 })();
 
@@ -93,7 +100,7 @@ async function init({
   ui,
   student_data,
   patient_data,
-  intro_data
+  intro_data,
 }) {
   /**
    * Initialize the backend user if necessary

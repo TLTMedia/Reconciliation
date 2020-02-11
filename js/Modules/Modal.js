@@ -20,7 +20,7 @@ export class Modal {
         }
     }
 
-    show_modal({ content, image = "images/NotFound.png", button_text = "Close", title = "status", show_cancel = true, show_image = true, show_attempts = true } = {}) {
+    show_modal({ content, image = "images/YoungGirlPatients_Base.png", button_text = "Close", title = "status", show_cancel = true, show_image = true, show_attempts = true } = {}) {
         // this.modal.style.display = "block";
 
         $(this.modal).show();
@@ -47,6 +47,22 @@ export class Modal {
         } else {
             $(".modal-attempts").show();
         }
+    }
+
+    set_modal_body(html) {
+        $(".modal-body").html(html);
+    }
+
+    append_modal_body(html) {
+        $(".modal-body").append(html);
+    }
+
+    get_width() {
+        return $(".modal-body").width();
+    }
+
+    get_height() {
+        return $(".modal-body").width();
     }
 
     close_modal() {
